@@ -1,7 +1,7 @@
 // common
 @mixin sp {
     @media (max-width: 767px) {
-    @content; /* ←ここに後から書く中身が入りますという目印 */
+    @content;
     }
 }
 $main-color:rgba(77, 150, 0, 1);
@@ -82,7 +82,7 @@ img {
     &__nav ul {
         display: flex;
         align-items: center;
-        column-gap: 3rem;
+        column-gap: 3.1rem;
         list-style: none;
         li a {
             display: flex;
@@ -118,5 +118,36 @@ img {
         line-height: calc(70 / 40);
         color: $color-white;
         font-weight: 600;
+    }
+}
+
+// about
+.about {
+    &__contents {
+        position: relative;
+        width: 100%;
+    }
+    &__images {
+        aspect-ratio: 1080 / 500;
+    }
+    &__catch {
+        position: absolute;
+        top: 50%;
+        left: calc(438 / 1080 * 100%);
+        transform: translate(-50%, -50%);
+        writing-mode: vertical-rl;
+        h2 {
+        font-size: 3rem;
+        line-height: 118%;
+        margin-left: calc(60 / 1080 * 100vw);
+        font-weight: 500;
+        }
+        p {
+            font-size: 1.8rem;
+            line-height: 137%;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+        }
+        
     }
 }
