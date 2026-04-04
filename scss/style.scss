@@ -16,7 +16,6 @@ html {
     scroll-padding-top: 8.0rem;
     font-size: 10px;
     color: rgba(0, 0, 0, 1);
-    font-weight: 500;
 }
 html, body {
     margin: 0;
@@ -50,7 +49,17 @@ img {
         padding-inline: 3rem;
     }
 }
-
+@mixin title {
+    text-align: center;
+    h2 {
+        font-size: 3rem;
+        color: $main-color;
+    }
+    p {
+        font-size: 2rem;
+        margin-top: 0.6rem;
+    }
+}
 // header
 .header {
     width: 100%;
@@ -149,5 +158,145 @@ img {
             font-weight: 500;
         }
         
+    }
+}
+
+// service
+// =====================================
+// ABOUT
+// =====================================
+.about {
+    &__contents {
+        position: relative;
+        width: 100%;
+    }
+    // 【修正】 __images から __image に修正
+    &__image {
+        img {
+            width: 100%;
+            // 【修正】縦書きテキストがはみ出さないように高さをしっかり確保
+            min-height: 600px; 
+            object-fit: cover;
+        }
+    }
+    &__catch {
+        position: absolute;
+        top: 50%;
+        left: calc(438 / 1080 * 100%);
+        transform: translate(-50%, -50%);
+        writing-mode: vertical-rl;
+        h2 {
+            font-size: 3rem;
+            line-height: 118%;
+            margin-left: calc(60 / 1080 * 100vw);
+            font-weight: 500;
+        }
+        p {
+            font-size: 1.8rem;
+            line-height: 137%;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+        }
+    }
+}
+
+// =====================================
+// SERVICE
+// =====================================
+.service {
+    position: relative;
+    padding: 8rem 0;
+    background: $background;
+
+    &__title {
+        @include title;
+        margin-top: 0.8rem;
+        margin-bottom: 6.8rem;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        row-gap: 12rem;
+    }
+
+    &-item {
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+
+        &__image {
+            width: calc(600 / 960 * 100%);
+            position: relative;
+            z-index: 20;
+            
+            img {
+                height: auto;
+                aspect-ratio: 600 / 300;
+                object-fit: cover;
+            }
+            
+            h3 {
+                font-size: 1.6rem;
+                margin-top: 1.9rem;
+                color: rgba(0, 0, 0, 0.8);
+                font-weight: 500;
+            }
+        }
+
+        &__textarea {
+            background-color: $main-color;
+            color: $color-white;
+            aspect-ratio: 500 / 250;
+            width: calc(500 / 960 * 100%);
+            position: absolute;
+            right: 0;
+            bottom: -3rem;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            
+
+            h4 {
+                font-size: 2.5rem;
+                line-height: calc(33 / 25);
+                font-weight: 600;
+                text-align: left;
+                margin-bottom: 1.5rem;
+                padding-left: calc(248 / 500 * 100%);
+            }
+
+            p {
+                font-size: 1.6rem;
+                line-height: calc(25 / 16);
+                font-weight: 600;
+                text-align: left;
+                padding-left: calc(248 / 500 * 100%);
+            }
+        }
+        &--reverse {
+            justify-content: flex-end;
+
+            .service-item__image {
+                h3 {
+                    text-align: right;
+                }
+            }
+
+            .service-item__textarea {
+                right: auto;
+                left: 0;
+                align-items: flex-start;
+                h4 {
+                    padding-left: calc(40 / 500 * 100%);
+                    
+                }
+                p {
+                    padding-left: calc(40 / 500 * 100%);
+                }
+            }
+        }
     }
 }
