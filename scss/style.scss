@@ -300,3 +300,35 @@ img {
         }
     }
 }
+
+// works
+.works {
+    padding: 8rem 0 9.7rem;
+    &__title {
+        @include title;
+    }
+    &__contents {
+        
+        margin-top: 6.8rem;
+    }
+    &__items {
+        display: flex;
+        justify-content: space-between;
+    }
+    &-item {
+        column-gap: calc(40 / 960 * 100vw);
+        &__image img {
+        width: calc(200 / 960 * 100vw);
+        aspect-ratio: 200 / 200;
+        }
+        &__textarea {
+            text-align: center;
+            h3 {
+                font-size: 1.6rem;
+                line-height: calc(25 / 16);
+                font-weight: 500;
+            }
+        }
+    }
+    
+}

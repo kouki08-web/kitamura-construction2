@@ -316,4 +316,47 @@ img {
 }
 .service-item--reverse .service-item__textarea p {
   padding-left: 8%;
+}
+
+.works {
+  padding: 8rem 0 9.7rem;
+}
+.works__title {
+  text-align: center;
+}
+.works__title h2 {
+  font-size: 3rem;
+  color: rgb(77, 150, 0);
+}
+.works__title p {
+  font-size: 2rem;
+  margin-top: 0.6rem;
+}
+.works__contents {
+  margin-top: 6.8rem;
+}
+.works__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.works-item {
+  -webkit-column-gap: 4.1666666667vw;
+     -moz-column-gap: 4.1666666667vw;
+          column-gap: 4.1666666667vw;
+}
+.works-item__image img {
+  width: 20.8333333333vw;
+  aspect-ratio: 200/200;
+}
+.works-item__textarea {
+  text-align: center;
+}
+.works-item__textarea h3 {
+  font-size: 1.6rem;
+  line-height: 1.5625;
+  font-weight: 500;
 }/*# sourceMappingURL=style.css.map */
