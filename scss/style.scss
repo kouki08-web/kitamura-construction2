@@ -1,12 +1,26 @@
-// common
+// 変数とミックスインはファイルの最上部にまとめる
+$main-color: rgba(77, 150, 0, 1);
+$color-white: rgba(255, 255, 255, 1);
+$background: rgba(77, 150, 0, 0.1);
+
 @mixin sp {
     @media (max-width: 767px) {
-    @content;
+        @content;
     }
 }
-$main-color:rgba(77, 150, 0, 1);
-$color-white: rgba(255, 255, 255, 1);
-$background:rgba(77, 150, 0, 0.1);
+
+@mixin title {
+    text-align: center;
+    h2 {
+        font-size: 3rem;
+        color: $main-color;
+    }
+    p {
+        font-size: 2rem;
+        margin-top: 0.6rem;
+    }
+}
+
 // base
 html {
     -webkit-appearance: none;
@@ -25,6 +39,7 @@ body {
     font-family: "Yu Mincho", "YuMincho", "MS PMincho", serif;
     letter-spacing: 0;
 }
+
 /* common */
 @media (max-width: 767px) {
     .pc {
@@ -49,17 +64,7 @@ img {
         padding-inline: 3rem;
     }
 }
-@mixin title {
-    text-align: center;
-    h2 {
-        font-size: 3rem;
-        color: $main-color;
-    }
-    p {
-        font-size: 2rem;
-        margin-top: 0.6rem;
-    }
-}
+
 // header
 .header {
     width: 100%;
@@ -136,45 +141,9 @@ img {
         position: relative;
         width: 100%;
     }
-    &__images {
-        aspect-ratio: 1080 / 500;
-    }
-    &__catch {
-        position: absolute;
-        top: 50%;
-        left: calc(438 / 1080 * 100%);
-        transform: translate(-50%, -50%);
-        writing-mode: vertical-rl;
-        h2 {
-        font-size: 3rem;
-        line-height: 118%;
-        margin-left: calc(60 / 1080 * 100vw);
-        font-weight: 500;
-        }
-        p {
-            font-size: 1.8rem;
-            line-height: 137%;
-            letter-spacing: 0.2em;
-            font-weight: 500;
-        }
-        
-    }
-}
-
-// service
-// =====================================
-// ABOUT
-// =====================================
-.about {
-    &__contents {
-        position: relative;
-        width: 100%;
-    }
-    // 【修正】 __images から __image に修正
     &__image {
         img {
             width: 100%;
-            // 【修正】縦書きテキストがはみ出さないように高さをしっかり確保
             min-height: 600px; 
             object-fit: cover;
         }
@@ -200,9 +169,7 @@ img {
     }
 }
 
-// =====================================
-// SERVICE
-// =====================================
+// service
 .service {
     position: relative;
     padding: 8rem 0;
@@ -220,12 +187,12 @@ img {
         row-gap: 12rem;
     }
 
-    &-item {
+    &__item {
         display: flex;
         align-items: flex-start;
         position: relative;
 
-        &__image {
+        .service__image {
             width: calc(600 / 960 * 100%);
             position: relative;
             z-index: 20;
@@ -244,7 +211,7 @@ img {
             }
         }
 
-        &__textarea {
+        .service__textarea {
             background-color: $main-color;
             color: $color-white;
             aspect-ratio: 500 / 250;
@@ -257,7 +224,6 @@ img {
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
-            
 
             h4 {
                 font-size: 2.5rem;
@@ -276,22 +242,22 @@ img {
                 padding-left: calc(248 / 500 * 100%);
             }
         }
+
         &--reverse {
             justify-content: flex-end;
 
-            .service-item__image {
+            .service__image {
                 h3 {
                     text-align: right;
                 }
             }
 
-            .service-item__textarea {
+            .service__textarea {
                 right: auto;
                 left: 0;
                 align-items: flex-start;
                 h4 {
                     padding-left: calc(40 / 500 * 100%);
-                    
                 }
                 p {
                     padding-left: calc(40 / 500 * 100%);
@@ -308,27 +274,129 @@ img {
         @include title;
     }
     &__contents {
-        
         margin-top: 6.8rem;
     }
     &__items {
         display: flex;
         justify-content: space-between;
     }
-    &-item {
+    &__item {
         column-gap: calc(40 / 960 * 100vw);
-        &__image img {
-        width: calc(200 / 960 * 100vw);
-        aspect-ratio: 200 / 200;
+        
+        .works__image img {
+            width: calc(200 / 960 * 100vw);
+            aspect-ratio: 200 / 200;
         }
-        &__textarea {
+        .works__textarea {
             text-align: center;
             h3 {
                 font-size: 1.6rem;
                 line-height: calc(25 / 16);
                 font-weight: 500;
+                margin-top: 1.5rem;
+            }
+        }
+    }
+}
+
+// news
+.news {
+    padding: 8rem 0;
+    background: $background;
+    &__title {
+        @include title;
+    }
+    &__items {
+        display: flex;
+        justify-content: space-between;
+        column-gap: calc(60 / 920 * 100vw);
+    }
+    &__item {
+        margin-top: 6.8rem;
+        width: calc(430 / 920 * 100vw);
+        background: $color-white;
+        
+        .news__catch {
+            background: $main-color;
+            width: 100%;
+            height: calc(50 / 1080 * 100vw);
+            display: flex;
+            align-items: center;
+            gap: calc(60 / 1080 * 100vw);
+            
+            h3 {
+                font-size: 2rem;
+                font-weight: 600;
+                color: $color-white;
+                margin-left: calc(20 / 1080 * 100%);
             }
         }
     }
     
+    &__article-link {
+        display: flex;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid $main-color;
+        text-decoration: none;
+        color: inherit;
+        transition: opacity 0.3s;
+        padding-bottom: calc(13 / 1080 * 100%);
+        
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+    
+    &__date {
+        margin-right: 2rem;
+        font-size: 1.6rem;
+        font-weight: 500;
+        width: calc(53 / 1080 * 100vw);
+        margin-top: calc(23 / 1080 * 100%);
+        margin-left: calc(21 / 1080 * 100%);
+    }
+    
+    &__text {
+        font-size: 1.8rem;
+        line-height: calc(25 / 18);
+        font-weight: 500;
+        flex: 1;
+        margin-top: calc(30 / 1080 * 100%);
+        margin-left: calc(69 / 1080 * 100%);
+    }
+    
+    &__more {
+        text-align: right;
+        margin-top: 1.5rem;
+        a {
+            font-family: "Yu Mincho", serif;
+            font-size: 1.4rem;
+            line-height: calc(33 / 14);
+            font-weight: 500;
+            color: $main-color;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            padding-right: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            
+            &:hover {
+                opacity: 0.7;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: calc(11 / 920 * 100vw);
+                right: calc(25 / 920 * 100vw);
+                bottom: 8px;
+                width: 35px;
+                height: 15px;
+                background: url('../images/more.svg');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: right bottom;
+            }
+        }
+    }
 }
