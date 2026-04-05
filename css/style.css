@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   -webkit-appearance: none;
   -webkit-text-size-adjust: 100%;
@@ -447,4 +448,90 @@ img {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right bottom;
+}
+
+.company {
+  padding: 8rem 0;
+}
+.company__title {
+  text-align: center;
+}
+.company__title h2 {
+  font-size: 3rem;
+  color: rgb(77, 150, 0);
+}
+.company__title p {
+  font-size: 2rem;
+  margin-top: 0.6rem;
+}
+.company-item {
+  /* ▼ Step 1: flexを削除して、ここを基準点にする */
+  position: relative;
+}
+.company-item__map {
+  position: relative;
+  aspect-ratio: 600/400;
+  width: 65.2173913043%;
+  z-index: 20;
+}
+.company-item__info {
+  background: rgb(77, 150, 0);
+  width: 54.347826087%;
+  aspect-ratio: 500/262;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  right: 0;
+  bottom: -3rem; /* 元のコードの意図通り！ */
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: left;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 4.9rem 0.5rem 4.2rem 22rem;
+}
+.company-item {
+  /* ▼ 文字の余白（前回と同じ） */
+}
+.company-item__name p {
+  font-size: 2rem;
+}
+.company-item__address p {
+  font-size: 1.6rem;
+  line-height: 1.5625;
+  margin-top: 1.5rem;
+}
+.company-item__tel {
+  margin-top: 1.5rem;
+}
+.company-item__tel a {
+  font-size: 1.6rem;
+  pointer-events: none;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+.company-item__tel span {
+  font-size: 1.6rem;
+}
+.company-item__mail {
+  margin-top: 1.5rem;
+  font-size: 1.6rem;
+}
+.company-item__mail a {
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+  color: rgb(255, 255, 255);
+}
+.company-item__mail a:hover {
+  opacity: 0.7;
 }/*# sourceMappingURL=style.css.map */

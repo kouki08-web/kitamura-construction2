@@ -400,3 +400,73 @@ img {
         }
     }
 }
+
+// company
+.company {
+    padding: 8rem 0;
+    &__title {
+        @include title;
+    }
+    &-item {
+        /* ▼ Step 1: flexを削除して、ここを基準点にする */
+        position: relative; 
+        
+        &__map {
+            position: relative;
+            aspect-ratio: 600 / 400;
+            width: calc(600 / 920 * 100%);
+            z-index: 20;
+        }
+        &__info {
+            background: $main-color;
+            width: calc(500 / 920 * 100%);
+            aspect-ratio: 500 / 262;
+            box-sizing: border-box; 
+            font-weight: 600;
+            color: $color-white;
+            position: absolute;
+            right: 0;
+            bottom: -3rem; /* 元のコードの意図通り！ */
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            display: flex;
+            justify-content: flex-end;
+            padding: 4.9rem 0.5rem 4.2rem 22rem;
+        }
+        
+        /* ▼ 文字の余白（前回と同じ） */
+        &__name p {
+            font-size: 2rem;
+        }
+        &__address p{
+            font-size: 1.6rem;
+            line-height: calc(25 / 16);
+            margin-top: 1.5rem;
+        }
+        &__tel {
+            margin-top: 1.5rem;
+            a {
+                font-size: 1.6rem;
+                pointer-events: none;
+                text-decoration: none;
+                color: $color-white;
+            }
+            span {
+                font-size: 1.6rem;
+            }
+        }
+        &__mail {
+            margin-top: 1.5rem;
+            font-size: 1.6rem;
+            a {
+                transition: opacity 0.4s;
+                color: $color-white;
+                &:hover { 
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+}
