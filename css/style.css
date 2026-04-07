@@ -776,4 +776,140 @@ img {
 }
 .contact__submit button:hover {
   opacity: 0.7;
+}
+
+.footer {
+  padding: 8rem 2rem 2.9rem;
+}
+.footer .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.footer__title h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.footer__nav {
+  width: 100%;
+  padding-top: 2.8rem;
+}
+.footer__nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-inline: auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 2rem 4rem;
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid rgb(0, 0, 0);
+  padding-top: 2.8rem;
+  width: 78.4782608696%;
+}
+.footer__nav ul li a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 1.8rem;
+  line-height: 1.8333333333;
+  font-weight: 500;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+.footer__nav ul li a:hover {
+  opacity: 0.7;
+}
+.footer__sns {
+  width: 100%;
+  margin-bottom: 8rem;
+}
+.footer__sns ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3rem;
+  list-style: none;
+  margin-top: 2.6rem;
+}
+.footer__sns .sns-icon {
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+}
+.footer__sns .sns-icon img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer__sns .sns-icon:hover {
+  opacity: 0.7;
+}
+.footer__copyright {
+  background: rgb(77, 150, 0);
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  height: 9.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; /* 左右の真ん中 */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+.footer__copyright .copyright {
+  font-size: 2rem;
+  opacity: 0.8;
+  margin: 0;
+  padding-inline: 0;
+}
+@media (max-width: 767px) {
+  .footer {
+    padding: 5rem 0 3rem;
+  }
+  .footer__title h2 {
+    font-size: 2rem;
+  }
+  .footer__nav ul {
+    gap: 1.5rem 2rem;
+  }
+  .footer__nav ul li a {
+    font-size: 1.2rem;
+  }
+  .footer__sns {
+    padding-top: 2rem;
+  }
+  .footer__sns ul {
+    gap: 2rem;
+  }
 }/*# sourceMappingURL=style.css.map */
