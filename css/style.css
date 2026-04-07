@@ -465,7 +465,6 @@ img {
   margin-top: 0.6rem;
 }
 .company-item {
-  /* ▼ Step 1: flexを削除して、ここを基準点にする */
   position: relative;
 }
 .company-item__map {
@@ -533,5 +532,248 @@ img {
   color: rgb(255, 255, 255);
 }
 .company-item__mail a:hover {
+  opacity: 0.7;
+}
+
+.contact {
+  padding: 8rem 0;
+  background: rgba(77, 150, 0, 0.1);
+}
+.contact__title {
+  text-align: center;
+}
+.contact__title h2 {
+  font-size: 3rem;
+  color: rgb(77, 150, 0);
+}
+.contact__title p {
+  font-size: 2rem;
+  margin-top: 0.6rem;
+}
+.contact__contents {
+  width: 100%;
+  max-width: 880px;
+  margin: 5rem auto 0;
+  padding: 0 2rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.contact__text {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.contact__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 3rem;
+}
+.contact__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+}
+.contact__item:has(.contact__input--checkbox), .contact__item:has(.contact__policy), .contact__item:has(textarea) {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 1.5rem;
+}
+.contact__item:has(.contact__input--checkbox) .contact__label,
+.contact__item:has(.contact__input--checkbox) .contact__input,
+.contact__item:has(.contact__input--checkbox) .contact__policy, .contact__item:has(.contact__policy) .contact__label,
+.contact__item:has(.contact__policy) .contact__input,
+.contact__item:has(.contact__policy) .contact__policy, .contact__item:has(textarea) .contact__label,
+.contact__item:has(textarea) .contact__input,
+.contact__item:has(textarea) .contact__policy {
+  width: 100%;
+}
+.contact__label {
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding-top: 1.5rem;
+}
+.contact__label p {
+  margin: 0;
+}
+.contact__label label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.contact__label label .required {
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+.contact__input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.contact__item:nth-child(1) .contact__input {
+  margin-left: 9.5rem;
+}
+.contact__item:nth-child(3) .contact__input {
+  margin-left: 1.9rem;
+}
+.contact__item:nth-child(4) .contact__input {
+  margin-left: 3rem;
+}
+.contact__input input[type=text],
+.contact__input input[type=email],
+.contact__input select,
+.contact__input textarea {
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  border: none;
+  background: rgb(255, 255, 255);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: inherit;
+  outline: none;
+}
+.contact__input input[type=text]::-webkit-input-placeholder, .contact__input input[type=email]::-webkit-input-placeholder, .contact__input select::-webkit-input-placeholder, .contact__input textarea::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.contact__input input[type=text]::-moz-placeholder, .contact__input input[type=email]::-moz-placeholder, .contact__input select::-moz-placeholder, .contact__input textarea::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.contact__input input[type=text]:-ms-input-placeholder, .contact__input input[type=email]:-ms-input-placeholder, .contact__input select:-ms-input-placeholder, .contact__input textarea:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.contact__input input[type=text]::-ms-input-placeholder, .contact__input input[type=email]::-ms-input-placeholder, .contact__input select::-ms-input-placeholder, .contact__input textarea::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.contact__input input[type=text]::placeholder,
+.contact__input input[type=email]::placeholder,
+.contact__input select::placeholder,
+.contact__input textarea::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.contact__input select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z" fill="%234d9600"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1.5rem center;
+  cursor: pointer;
+}
+.contact__input textarea {
+  resize: vertical;
+  min-height: 150px;
+  line-height: 1.5;
+  aspect-ratio: 800/200;
+}
+.contact__input--radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4rem;
+  padding-top: 1.5rem;
+}
+.contact__input--radio label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.contact__input--radio label input {
+  margin-right: 0.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.contact__item:nth-child(2) .contact__input--radio {
+  margin-left: 14rem;
+}
+.contact__input--checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1.5rem 0;
+}
+.contact__input--checkbox label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  width: 25%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.contact__input--checkbox label input {
+  margin-right: 0.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.contact__policy {
+  width: 100%;
+}
+.contact__policy-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.contact__policy-box {
+  width: 100%;
+  height: 300px;
+  background: rgb(255, 255, 255);
+  border: none;
+  padding: 4rem;
+  overflow-y: scroll;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  aspect-ratio: 800/300;
+}
+.contact__policy-box p {
+  font-size: 1.8rem;
+  line-height: 1.7222222222;
+  margin: 0;
+}
+.contact__submit {
+  text-align: center;
+  margin-top: 4rem;
+}
+.contact__submit button {
+  background: rgb(77, 150, 0);
+  color: rgb(255, 255, 255);
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding: 1.5rem 6rem;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  margin-top: 8.8rem;
+}
+.contact__submit button:hover {
   opacity: 0.7;
 }/*# sourceMappingURL=style.css.map */
