@@ -11,19 +11,28 @@ $background: rgba(77, 150, 0, 0.1);
 
 @mixin title {
     text-align: center;
+    width: 100%;
+    margin-inline: auto;
+    text-indent: 0.8em;
     h2 {
         font-size: 3rem;
         color: $main-color;
+        font-weight: 500;
+        letter-spacing: 30%;
+        text-indent: 0.3em;
     }
     p {
         font-size: 2rem;
-        margin-top: 0.6rem;
+        letter-spacing: 30%;
+        margin-top: -2.3rem;
+        text-indent: 0.3em;
     }
 }
 
 // base
 html {
     -webkit-appearance: none;
+    appearance: none;
     -webkit-text-size-adjust: 100%;
     word-break: break-all;
     scroll-behavior: smooth;
@@ -57,11 +66,12 @@ img {
     display: block;
 }
 .inner {
-    padding-inline: 8rem;
+    margin-inline: auto;
+    max-width: 920px;
 }
 @media (max-width: 767px) {
     .inner {
-        padding-inline: 3rem;
+        max-width: 315px;
     }
 }
 
@@ -122,16 +132,26 @@ img {
         position: absolute;
         display: flex;
         justify-content: center;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 51.5%;
+        left: 51%;
+        transform: translate(-51.5%, -51%);
         text-align: center;
+        @include sp {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
     &__catch h2 {
         font-size: 4rem;
         line-height: calc(70 / 40);
         color: $color-white;
         font-weight: 600;
+        letter-spacing: 0.29em;
+        @include sp {
+            font-size: 3rem;
+            line-height: 60 / 30;
+        }
     }
 }
 
@@ -142,29 +162,46 @@ img {
         width: 100%;
     }
     &__image {
-        img {
-            width: 100%;
-            min-height: 600px; 
-            object-fit: cover;
+        width: 100%;
+        object-fit: cover;
+        aspect-ratio: 1080 / 500;
+        @include sp {
+            aspect-ratio: 375 / 584;
         }
     }
     &__catch {
         position: absolute;
-        top: 50%;
-        left: calc(438 / 1080 * 100%);
+        top: 48%;
+        left: 45.3%;
         transform: translate(-50%, -50%);
         writing-mode: vertical-rl;
+        @include sp {
+            display: flex;
+            flex-direction: row;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
         h2 {
             font-size: 3rem;
-            line-height: 118%;
             margin-left: calc(60 / 1080 * 100vw);
             font-weight: 500;
+            letter-spacing: 118%;
+            height: 100%;
+            @include sp {
+                font-size: 2.5rem;
+                line-height: 119%;
+            }
         }
         p {
             font-size: 1.8rem;
             line-height: 137%;
-            letter-spacing: 0.2em;
+            letter-spacing: 137%;
             font-weight: 500;
+            @include sp {
+                font-size: 1.6rem;
+                line-height: 125%;
+            }
         }
     }
 }
@@ -172,19 +209,21 @@ img {
 // service
 .service {
     position: relative;
-    padding: 8rem 0;
+    padding: 4.9rem 2rem 11.5rem;
     background: $background;
 
     &__title {
         @include title;
-        margin-top: 0.8rem;
         margin-bottom: 6.8rem;
     }
 
     &__items {
         display: flex;
         flex-direction: column;
-        row-gap: 12rem;
+        row-gap: 11.4rem;
+        @include sp {
+            display: block;
+        }
     }
 
     &__item {
@@ -192,20 +231,29 @@ img {
         align-items: flex-start;
         position: relative;
 
+        // 【修正】3枚目のアイテムだけ文字位置を調整
+        &:nth-child(3) {
+            .service__textarea h4 {
+                padding-right: calc(87 / 500 * 100%);
+                margin-top: 2.5rem;
+            }
+            .service__textarea p {
+                padding-left: calc(208 / 500 * 100%);
+                padding-right: calc(38 / 500 * 100%);
+            }
+        }
+
         .service__image {
-            width: calc(600 / 960 * 100%);
+            width: calc(626 / 960 * 100%);
             position: relative;
             z-index: 20;
-            
-            img {
-                height: auto;
-                aspect-ratio: 600 / 300;
-                object-fit: cover;
-            }
+            height: auto;
+            aspect-ratio: 600 / 300;
+            object-fit: cover;
             
             h3 {
                 font-size: 1.6rem;
-                margin-top: 1.9rem;
+                margin-top: 2.1rem;
                 color: rgba(0, 0, 0, 0.8);
                 font-weight: 500;
             }
@@ -215,10 +263,10 @@ img {
             background-color: $main-color;
             color: $color-white;
             aspect-ratio: 500 / 250;
-            width: calc(500 / 960 * 100%);
+            width: calc(500 / 920 * 100%);
             position: absolute;
             right: 0;
-            bottom: -3rem;
+            bottom: calc(-90 / 920 * 100%);
             z-index: 10;
             display: flex;
             flex-direction: column;
@@ -230,8 +278,9 @@ img {
                 line-height: calc(33 / 25);
                 font-weight: 600;
                 text-align: left;
-                margin-bottom: 1.5rem;
-                padding-left: calc(248 / 500 * 100%);
+                margin: 0;
+                margin-top: 2.4rem;
+                padding-right: calc(27 / 500 * 100%);
             }
 
             p {
@@ -240,6 +289,7 @@ img {
                 font-weight: 600;
                 text-align: left;
                 padding-left: calc(248 / 500 * 100%);
+                padding-right: calc(29 / 500 * 100%);
             }
         }
 
@@ -258,18 +308,20 @@ img {
                 align-items: flex-start;
                 h4 {
                     padding-left: calc(40 / 500 * 100%);
+                    padding-right: 0;
                 }
                 p {
                     padding-left: calc(40 / 500 * 100%);
+                    padding-right: 0;
                 }
             }
         }
-    }
-}
+    } // &__item の閉じ
+} // .service の閉じ
 
 // works
 .works {
-    padding: 8rem 0 9.7rem;
+    padding: 5rem 0 8.1rem;
     &__title {
         @include title;
     }
@@ -283,17 +335,17 @@ img {
     &__item {
         column-gap: calc(40 / 960 * 100vw);
         
-        .works__image img {
-            width: calc(200 / 960 * 100vw);
+        .works__image {
+            width: calc(178 / 960 * 100vw);
             aspect-ratio: 200 / 200;
         }
         .works__textarea {
-            text-align: center;
+            text-align: left;
             h3 {
                 font-size: 1.6rem;
                 line-height: calc(25 / 16);
                 font-weight: 500;
-                margin-top: 1.5rem;
+                margin-top: 2rem;
             }
         }
     }
@@ -301,7 +353,7 @@ img {
 
 // news
 .news {
-    padding: 8rem 0;
+    padding: 4.9rem 0 8.25rem;
     background: $background;
     &__title {
         @include title;
@@ -309,10 +361,11 @@ img {
     &__items {
         display: flex;
         justify-content: space-between;
-        column-gap: calc(60 / 920 * 100vw);
+        column-gap: calc(60 / 920 * 100%);
+        
     }
     &__item {
-        margin-top: 6.8rem;
+        margin-top: 4.9rem;
         width: calc(430 / 920 * 100vw);
         background: $color-white;
         
@@ -328,32 +381,29 @@ img {
                 font-size: 2rem;
                 font-weight: 600;
                 color: $color-white;
-                margin-left: calc(20 / 1080 * 100%);
+                margin-left: calc(45 / 960 * 100%);
             }
         }
     }
     
     &__article-link {
         display: flex;
-        padding: 1.5rem 0;
         border-bottom: 1px solid $main-color;
         text-decoration: none;
         color: inherit;
         transition: opacity 0.3s;
-        padding-bottom: calc(13 / 1080 * 100%);
-        
+        margin-left: calc(45 / 960 * 100%);
+        margin-right: calc(45 / 960 * 100%);
         &:hover {
             opacity: 0.7;
         }
     }
     
     &__date {
-        margin-right: 2rem;
         font-size: 1.6rem;
         font-weight: 500;
         width: calc(53 / 1080 * 100vw);
-        margin-top: calc(23 / 1080 * 100%);
-        margin-left: calc(21 / 1080 * 100%);
+        margin-top: calc(66 / 960 * 100%);
     }
     
     &__text {
@@ -361,8 +411,8 @@ img {
         line-height: calc(25 / 18);
         font-weight: 500;
         flex: 1;
-        margin-top: calc(30 / 1080 * 100%);
-        margin-left: calc(69 / 1080 * 100%);
+        margin-top: calc(27 / 960 * 100%);
+        margin-left: calc(170 / 960 * 100%);
     }
     
     &__more {
@@ -370,9 +420,9 @@ img {
         margin-top: 1.5rem;
         a {
             font-family: "Yu Mincho", serif;
-            font-size: 1.4rem;
-            line-height: calc(33 / 14);
-            font-weight: 500;
+            font-size: 2rem;
+            line-height: calc(20 / 20);
+            font-weight: 600;
             color: $main-color;
             text-decoration: none;
             display: inline-block;
@@ -403,7 +453,7 @@ img {
 
 // company
 .company {
-    padding: 8rem 0;
+    padding: 4.9rem 0 13.8rem;
     &__title {
         @include title;
     }
@@ -412,9 +462,15 @@ img {
         
         &__map {
             position: relative;
-            aspect-ratio: 600 / 400;
+            aspect-ratio: 600 / 400; 
             width: calc(600 / 920 * 100%);
             z-index: 20;
+            margin-top: 7rem;
+            iframe {
+                width: 100%;  // 親の幅（calcの結果）に合わせる
+                height: 100%; // 親の高さ（300px）に合わせる
+                border: 0;
+            }
         }
         &__info {
             background: $main-color;
@@ -425,43 +481,53 @@ img {
             color: $color-white;
             position: absolute;
             right: 0;
-            bottom: -3rem; /* 元のコードの意図通り！ */
+            bottom: -5.8rem;
             z-index: 10;
             display: flex;
             flex-direction: column;
             text-align: left;
             display: flex;
             justify-content: flex-end;
-            padding: 4.9rem 0.5rem 4.2rem 22rem;
+            padding: 2rem 0.5rem 2.2rem 22rem;
         }
-        
-        /* ▼ 文字の余白（前回と同じ） */
+        &__address {
+            font-style: initial;
+        }
         &__name p {
             font-size: 2rem;
+            font-style: initial;
+            margin: 0;
         }
         &__address p{
             font-size: 1.6rem;
             line-height: calc(25 / 16);
-            margin-top: 1.5rem;
+            margin: 0;
+            margin-top: 0.9rem;
         }
         &__tel {
-            margin-top: 1.5rem;
+            margin-top: 0.6rem;
             a {
-                font-size: 1.6rem;
+                font-size: 2.5rem;
                 pointer-events: none;
                 text-decoration: none;
                 color: $color-white;
+                font-style: initial;
             }
             span {
                 font-size: 1.6rem;
+                font-style: initial;
             }
         }
         &__mail {
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
             font-size: 1.6rem;
+            margin-bottom: 2.1rem;
+            font-style: initial;
             a {
                 transition: opacity 0.4s;
                 color: $color-white;
+                font-style: initial;
+                
                 &:hover { 
                     opacity: 0.7;
                 }
@@ -469,50 +535,39 @@ img {
         }
     }
 }
-// contact (元の記述をすべて上書きしてください)
-.contact {
-    padding: 8rem 0;
-    background: $background;
 
+// contact
+.contact {
+    padding: 4.9rem 2rem 8rem;
+    background: $background;
     &__title {
         @include title;
     }
-
-    // フォーム全体を800pxにして中央に配置
     &__contents {
-        width: 100%;
-        max-width: 880px;
-        margin: 5rem auto 0; // margin-inline: auto; と同じく中央寄せになります
-        padding: 0 2rem; // スマホではみ出さないように左右に余白
+        width: calc(800 / 880 * 100%);
+        max-width: 800px;
+        margin: 3.8rem auto 0;
         box-sizing: border-box;
     }
-
     &__text {
-        font-size: 1.6rem; // Figmaに合わせて少し小さく
+        font-size: 2rem;
         font-weight: 500;
-        text-align: center;
-        margin-bottom: 5rem;
+        text-align: left;
+        margin-top: 1rem;
     }
-
     &__items {
         display: flex;
         flex-direction: column;
-        row-gap: 3rem; // 各項目の縦の間隔
+        row-gap: 3rem;
     }
-
-    // 基本は横並び（左：ラベル 50%、右：入力欄 50%）
     &__item {
         display: flex;
         align-items: flex-start;
         width: 100%;
-
-        // ★HTMLを変えない魔法：チェックボックス、個人情報保護方針、さらに「内容(textarea)」を縦並びにする
         &:has(.contact__input--checkbox),
         &:has(.contact__policy),
-        &:has(textarea) { // ← ここに textarea を追加しました
+        &:has(textarea) {
             flex-direction: column;
-            row-gap: 1.5rem;
-
             .contact__label,
             .contact__input,
             .contact__policy {
@@ -520,12 +575,10 @@ img {
             }
         }
     }
-
-    // 左側のラベル（50%）
     &__label {
-        font-size: 1.6rem;
+        font-size: 2rem;
         font-weight: 500;
-        padding-top: 1.5rem; // 入力欄の中の文字と高さを合わせる
+        margin-top: 1.3rem; 
 
         p {
             margin: 0;
@@ -534,44 +587,60 @@ img {
         label {
             display: flex;
             align-items: center;
-            .required {
-                font-size: 1.2rem;
-                margin-left: 0.5rem;
-            }
+            
         }
     }
-
-    // 右側の入力欄（50%）
+    &__item:nth-child(1) {
+        margin-top: 4.9rem;
+    }
+    &__item:nth-child(2) {
+        margin-top: 1rem;
+    }
+    &__item:nth-child(3) {
+        margin-top: 1.9rem;
+        letter-spacing: -4%;
+    }
+    &__item:nth-child(4) {
+        margin-top: 1.8rem;
+    }
+    &__item:nth-child(5) {
+        margin-top: 1.8rem;
+    }
+    &__item:nth-child(6) {
+        margin-top: 0.7rem;
+    }
     &__input {
         flex: 1;
+        height: calc(50 / 800 * 100%);
         .contact__item:nth-child(1) & {
-            margin-left: 9.5rem; 
-            }
-            .contact__item:nth-child(3) & {
-            margin-left: 1.9rem; 
-            }
-            .contact__item:nth-child(4) & {
-            margin-left: 3rem; 
-            }
-        // テキスト入力・セレクトボックスなどの共通スタイル
+            margin-left: calc(110 / 920 * 100%);
+        }
+        .contact__item:nth-child(2) & {
+            margin-left: calc(148 / 920 * 100%);
+        }
+        .contact__item:nth-child(3) & {
+            margin-left: calc(25 / 920 * 100%); 
+        }
+        .contact__item:nth-child(4) & {
+            margin-left: calc(33 / 920 * 100%); 
+        }
         input[type="text"],
         input[type="email"],
         select,
         textarea {
             width: 100%;
-            padding: 1.5rem;
-            font-size: 1.6rem;
-            border: none;
+            padding: 1.2rem 2rem;
+            font-size: 1.8rem;
+            border: 1px solid #ddd;
             background: $color-white;
             box-sizing: border-box;
             font-family: inherit;
-            outline: none;            
+            outline: none;   
+            border: none;         
             &::placeholder {
                 color: rgba(0, 0, 0, 0.3);
             }
         }
-
-        // セレクトボックスの矢印をオリジナルに
         select {
             appearance: none;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z" fill="%234d9600"/></svg>');
@@ -579,104 +648,121 @@ img {
             background-position: right 1.5rem center;
             cursor: pointer;
         }
-
-        // テキストエリア（内容）
         textarea {
             resize: vertical;
             min-height: 150px;
             line-height: 1.5;
             aspect-ratio: 800 / 200;
+            margin-top: 1.1rem;
         }
-
-        // ラジオボタン（性別）
         &--radio {
             display: flex;
             align-items: center;
             gap: 4rem;
-            padding-top: 1.5rem; // ラベルと高さを合わせる
-
+            padding-top: 1.5rem;
             label {
                 display: flex;
                 align-items: center;
                 font-size: 1.6rem;
                 cursor: pointer;
 
-                input {
+                input[type="radio"] {
                     margin-right: 0.8rem;
-                    width: 1.6rem;
-                    height: 1.6rem;
+                    width: 2rem;
+                    height: 2rem;
+                    appearance: none !important; // これを追加
+                    border: none !important; // !importantで強制
+                    background: #fff !important;
+                    border: none;
+                    border-radius: 50%;
+                    cursor: pointer;
+
+                    &:checked {
+                        background: $main-color !important;
+                    }
                 }
-            }
-            .contact__item:nth-child(2) & {
-            margin-left: 14rem;
             }
         }
 
-        // チェックボックス（何を見て〜）
         &--checkbox {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem 0;
+            row-gap: calc(12 / 920 * 100vw);
+            margin-top: 1rem;
+            margin-left: -0.3rem;
 
             label {
                 display: flex;
                 align-items: center;
                 font-size: 1.8rem;
+                font-weight: 500;
                 cursor: pointer;
-                width: 25%; // PC: 4列
+                width: 25%;
                 box-sizing: border-box;
-                input {
-                    margin-right: 0.8rem;
-                    width: 1.6rem;
-                    height: 1.6rem;
+                column-gap: calc(70 / 920 * 100%);
+                input[type="checkbox"] {
+                    width: 2rem;
+                    height: 2rem;
+                    appearance: none !important; // これを追加
+                    -webkit-appearance: none !important; // これを追加
+                    border: none !important; // !importantで強制
+                    background: #fff !important;
+                    border: none;
+                    cursor: pointer;
+
+                    &:checked {
+                        background: $main-color !important;
+                        border-color: $main-color !important;
+                    }
                 }
             }
         }
     }
-
-    // 個人情報保護方針
+    
+    // 個人情報保護方針のネスト修正
     &__policy {
         width: 100%;
 
-        &-title {
-            font-size: 1.6rem;
-            font-weight: 500;
+        &-title { 
             margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: 500;
         }
-
         &-box {
             width: 100%;
-            height: 300px; // Figmaの指定通り
             background: $color-white;
-            border: none; // Figmaのプロパティを見ると「Border -」になっているため無しに設定
-            padding: 4rem; // FigmaのPadding 16
+            border: 1px solid #ccc;
+            padding: 4rem; 
+            padding-right: 6rem;
             overflow-y: scroll;
             box-sizing: border-box;
             aspect-ratio: 800 / 300;
+            border: none;
 
             p {
-                font-size: 1.8rem;
+                font-size: 1.8rem; // 可読性を上げるため少しサイズダウン
                 line-height: calc(31 / 18);
+                font-weight: 500;
                 margin: 0;
             }
         }
     }
 
-    // 送信ボタン
     &__submit {
         text-align: center;
-        margin-top: 4rem;
+        margin-top: 1.2rem;
 
         button {
             background: $main-color;
             color: $color-white;
-            font-size: 1.8rem;
-            font-weight: 500;
-            padding: 1.5rem 6rem;
+            font-size: 2rem;
+            font-weight: 600;
+            width: calc(300 / 1080 * 100vw);
+            aspect-ratio: 300 / 50;
             border: none;
             cursor: pointer;
             transition: opacity 0.3s;
-            margin-top: 8.8rem;
+            margin-top: 4rem;
 
             &:hover {
                 opacity: 0.7;
@@ -684,14 +770,17 @@ img {
         }
     }
 }
+
 // footer
 .footer {
-    padding: 8rem 2rem 2.9rem; // 上に余裕を持たせ、下は少しタイトに
+    padding: 6.5rem 0 0; 
+    background: #fff;
 
     .inner {
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-inline: 2rem;
     }
 
     &__title {
@@ -703,14 +792,14 @@ img {
 
     &__nav {
         width: 100%;
-        padding-top: 2.8rem;
+        padding-top: 0.2rem;
         ul {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-inline: auto;
             flex-wrap: wrap;
-            gap: 2rem 4rem; // 横の間隔を広めに設定
+            column-gap: calc(65.5 / 920 * 100%);
             list-style: none;
             padding: 0;
             border-top: 1px solid rgba(0, 0, 0, 1);
@@ -732,24 +821,25 @@ img {
 
     &__sns {
         width: 100%;
-        margin-bottom: 8rem;
         ul {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 3rem;
             list-style: none;
-            margin-top: 2.6rem;
+            margin-top: 1.6rem;
+            padding: 0;
         }
 
         .sns-icon {
             display: block;
-            width: 2.4rem;
+            width: 2,4rem;
             height: 2.4rem;
             transition: transform 0.3s, opacity 0.3s;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             img {
-                width: 100%;
-                height: 100%;
                 object-fit: contain;
             }
 
@@ -759,28 +849,28 @@ img {
         }
     }
 
+    // absolute配置を解除し、自然なブロック要素として配置
     &__copyright {
         background: $main-color;
         color: $color-white;
         font-weight: 500;
         height: 9.2rem;
         display: flex;
-        justify-content: center; /* 左右の真ん中 */
+        justify-content: center; 
         align-items: center;
-        position: absolute; // 親の制約から外れる
-        left: 0;           // 画面の左端に固定
         width: 100%;
+        max-width: none;
+        justify-content: center;
+        margin-top: 7.2rem;
         .copyright {
             font-size: 2rem;
             opacity: 0.8;
-            margin: 0;
-            padding-inline: 0;
         }
     }
 
     // レスポンシブ対応
     @include sp {
-        padding: 5rem 0 3rem;
+        padding: 5rem 0 0;
 
         &__title h2 {
             font-size: 2rem;
@@ -795,6 +885,7 @@ img {
 
         &__sns {
             padding-top: 2rem;
+            margin-bottom: 4rem;
             ul {
                 gap: 2rem;
             }
