@@ -18,21 +18,20 @@ $background: rgba(77, 150, 0, 0.1);
         font-size: 3rem;
         color: $main-color;
         font-weight: 500;
-        letter-spacing: 30%;
+        letter-spacing: 0.3em; // 修正: CSSの仕様として不正な % 指定を em に変更 (30% -> 0.3em)
         text-indent: 0.3em;
     }
     p {
         font-size: 2rem;
-        letter-spacing: 30%;
-        margin-top: -2.3rem;
+        letter-spacing: 0.3em; // 修正: % 指定を em に変更
+        margin-top: -2.4rem;
         text-indent: 0.3em;
     }
 }
 
 // base
 html {
-    -webkit-appearance: none;
-    appearance: none;
+    // 修正: htmlタグに対する appearance の指定は無効かつ不要なため削除
     -webkit-text-size-adjust: 100%;
     word-break: break-all;
     scroll-behavior: smooth;
@@ -85,6 +84,9 @@ img {
     z-index: 999;
     background: rgba(0, 0, 0, 0.15);
     color: $color-white;
+    @include sp {
+        height: 5rem;
+    }
     .inner {
         height: 100%;
         display: flex;
@@ -94,11 +96,15 @@ img {
     &__logo a {
         font-size: 2rem;
         height: 8rem;
+        font-weight: 500;
         display: flex;
         align-items: center;
         transition: opacity 0.4s;
         text-decoration: none;
         color: inherit;
+        @include sp {
+            height: 5rem;
+        }
         &:hover {
             opacity: 0.7;
         }
@@ -115,13 +121,61 @@ img {
             transition: opacity 0.4s;
             text-decoration: none;
             color: inherit;
-        }
-        &:hover {
-            opacity: 0.7;
+            &:hover {
+                opacity: 0.7; // 修正: ulではなく個別のリンク(aタグ)にホバー効果を適用するよう位置を変更
+            }
         }
     }
 }
-
+/* ハンバーガーメニュー */
+.hamburger {
+    position: relative;
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border: 2px solid #000;
+    margin-left: auto;
+}
+/* 三本線 */
+.hamburger span {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 4px;
+    background: #000;
+    transition: .4s;
+}
+.hamburger span:nth-of-type(1) {
+    top: 30%;
+}
+.hamburger span:nth-of-type(3) {
+    top: 70%;
+}
+/* ナビゲーション（中身） */
+.header-menu {
+    position: fixed;
+    width: 320px;
+    top: 78px;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #000;
+    transform: translateX(100%);
+    transition: transform .4s;
+}
+.header-menu ul {
+    margin: 0;
+    padding: 36px;
+    text-align: center;
+    list-style: none;
+    font-size: 24px;
+}
+.header-menu ul li:not(:last-of-type) {
+    margin-bottom: 36px;
+}
 // fv
 .fv {
     position: relative;
@@ -137,9 +191,10 @@ img {
         transform: translate(-51.5%, -51%);
         text-align: center;
         @include sp {
-            top: 50%;
-            left: 50%;
+            top: 51.3%;
+            left: 51.3%;
             transform: translate(-50%, -50%);
+            width: 100%;
         }
     }
     &__catch h2 {
@@ -150,7 +205,7 @@ img {
         letter-spacing: 0.29em;
         @include sp {
             font-size: 3rem;
-            line-height: 60 / 30;
+            line-height: calc(60 / 30);
         }
     }
 }
@@ -161,60 +216,79 @@ img {
         position: relative;
         width: 100%;
     }
+
     &__image {
         width: 100%;
         object-fit: cover;
         aspect-ratio: 1080 / 500;
+
         @include sp {
             aspect-ratio: 375 / 584;
         }
     }
+
     &__catch {
         position: absolute;
         top: 48%;
         left: 45.3%;
         transform: translate(-50%, -50%);
         writing-mode: vertical-rl;
+
         @include sp {
+            // 修正: 競合していた position 指定とスペルミス(roe)の修正
             display: flex;
             flex-direction: row;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            align-items: center;
+            gap: 2rem;
+            writing-mode: horizontal-tb; // 修正: 縦書き解除が必要であれば明示(元から横書きに見えるレイアウトへの変更のため)
         }
+
         h2 {
             font-size: 3rem;
             margin-left: calc(60 / 1080 * 100vw);
             font-weight: 500;
-            letter-spacing: 118%;
+            letter-spacing: 0.18em;
             height: 100%;
+
             @include sp {
-                font-size: 2.5rem;
-                line-height: 119%;
+                margin-left: 0;
+                font-size: 2.4rem; // 修正: font-sizeの重複指定を削除してこちらに統合
+                margin-bottom: 2rem;
+                letter-spacing: 0.1em;
+                line-height: 1.5;
             }
         }
+
         p {
             font-size: 1.8rem;
-            line-height: 137%;
-            letter-spacing: 137%;
+            line-height: 1.37;
+            letter-spacing: 0.13em;
             font-weight: 500;
+
             @include sp {
                 font-size: 1.6rem;
-                line-height: 125%;
+                line-height: 1.2;
+                letter-spacing: 0.05em;
             }
         }
     }
-}
 
+}
 // service
 .service {
     position: relative;
     padding: 4.9rem 2rem 11.5rem;
     background: $background;
+    @include sp {
+        padding: 2rem 2rem 0.1rem;
+    }
 
     &__title {
         @include title;
         margin-bottom: 6.8rem;
+        @include sp {
+            margin-bottom: 3.9rem;
+        }
     }
 
     &__items {
@@ -230,16 +304,28 @@ img {
         display: flex;
         align-items: flex-start;
         position: relative;
+        @include sp {
+            flex-direction: column;
+            margin-bottom: 5rem;
+        }
 
-        // 【修正】3枚目のアイテムだけ文字位置を調整
         &:nth-child(3) {
             .service__textarea h4 {
                 padding-right: calc(87 / 500 * 100%);
                 margin-top: 2.5rem;
+                @include sp {
+                    padding-right: 0;
+                    margin-top: 0;
+                }
             }
             .service__textarea p {
                 padding-left: calc(208 / 500 * 100%);
                 padding-right: calc(38 / 500 * 100%);
+                @include sp {
+                    // 修正: 重複していた padding-left 指定を一つに統合
+                    padding-left: calc(5 / 345 * 100%);
+                    margin-top: 1.2rem;
+                }
             }
         }
 
@@ -250,12 +336,21 @@ img {
             height: auto;
             aspect-ratio: 600 / 300;
             object-fit: cover;
+            @include sp {
+                width: 100%;
+                aspect-ratio: 375 / 250;
+            }
             
             h3 {
                 font-size: 1.6rem;
                 margin-top: 2.1rem;
                 color: rgba(0, 0, 0, 0.8);
                 font-weight: 500;
+                @include sp {
+                    font-size: 1.6rem;
+                    margin-top: 0.6rem;
+                    margin-bottom: 0;
+                }
             }
         }
 
@@ -272,6 +367,17 @@ img {
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
+            @include sp {
+                position: relative;
+                width: 100%;
+                aspect-ratio: auto;
+                bottom: auto;
+                right: auto;
+                margin: 0.6rem auto 0; // 修正: 上書きし合っていた margin 指定をショートハンドに統合
+                padding: 5% 5% 0; // 修正: 上書きし合っていた padding 指定をショートハンドに統合
+                align-items: flex-start;
+                box-sizing: border-box;
+            }
 
             h4 {
                 font-size: 2.5rem;
@@ -281,6 +387,12 @@ img {
                 margin: 0;
                 margin-top: 2.4rem;
                 padding-right: calc(27 / 500 * 100%);
+                @include sp {
+                    font-size: 2rem;
+                    padding-top: 0.4rem;
+                    padding-left: calc(5 / 345 * 100%);
+                    margin-top: 0;
+                }
             }
 
             p {
@@ -290,15 +402,30 @@ img {
                 text-align: left;
                 padding-left: calc(248 / 500 * 100%);
                 padding-right: calc(29 / 500 * 100%);
+                @include sp {
+                    // 修正: 既にPC指定で定義済みの冗長な font-size 等を削除
+                    padding-left: calc(5 / 345 * 100%);
+                    padding-right: calc(80 / 345 * 100%);
+                    margin-top: 1.3rem;
+                    padding-bottom: 1.2rem;
+                    margin-bottom: 0;
+                }
             }
         }
 
         &--reverse {
             justify-content: flex-end;
+            @include sp {
+                flex-direction: column;
+                justify-content: flex-start;
+            }
 
             .service__image {
                 h3 {
                     text-align: right;
+                    @include sp {
+                        text-align: left;
+                    }
                 }
             }
 
@@ -306,38 +433,65 @@ img {
                 right: auto;
                 left: 0;
                 align-items: flex-start;
+                @include sp {
+                    left: auto;
+                }
                 h4 {
                     padding-left: calc(40 / 500 * 100%);
                     padding-right: 0;
+                    @include sp {
+                        padding-left: calc(5 / 345 * 100%);
+                    }
                 }
                 p {
                     padding-left: calc(40 / 500 * 100%);
                     padding-right: 0;
+                    @include sp {
+                        padding-left: calc(5 / 345 * 100%);
+                        padding-bottom: 1rem;
+                    }
                 }
             }
         }
-    } // &__item の閉じ
-} // .service の閉じ
+    } 
+} 
 
 // works
 .works {
     padding: 5rem 0 8.1rem;
+    @include sp {
+        padding: 1.9rem 0 4.1rem;
+    }
     &__title {
         @include title;
     }
     &__contents {
         margin-top: 6.8rem;
+        @include sp {
+            margin-top: 4rem;
+        }
     }
     &__items {
         display: flex;
         justify-content: space-between;
+        @include sp {
+            flex-wrap: wrap;
+            row-gap: 2.2rem;
+        }
     }
     &__item {
-        column-gap: calc(40 / 960 * 100vw);
+        // 修正: display: flex; が設定されていないため無効になっていた column-gap を削除
+        @include sp {
+            width: 100%;
+        }
         
         .works__image {
             width: calc(178 / 960 * 100vw);
             aspect-ratio: 200 / 200;
+            @include sp {
+                width: 100%;
+                aspect-ratio: 315 / 250;
+            }
         }
         .works__textarea {
             text-align: left;
@@ -346,6 +500,10 @@ img {
                 line-height: calc(25 / 16);
                 font-weight: 500;
                 margin-top: 2rem;
+                @include sp {
+                    margin-top: 0.9rem;
+                    margin-bottom: 0;
+                }
             }
         }
     }
@@ -355,6 +513,9 @@ img {
 .news {
     padding: 4.9rem 0 8.25rem;
     background: $background;
+    @include sp {
+        padding: 1.9rem 0 5rem;
+    }
     &__title {
         @include title;
     }
@@ -362,12 +523,21 @@ img {
         display: flex;
         justify-content: space-between;
         column-gap: calc(60 / 920 * 100%);
-        
+        @include sp {
+            flex-direction: column;
+            row-gap: 5rem;
+            margin-top: 4.1rem;
+        }
     }
     &__item {
         margin-top: 4.9rem;
         width: calc(430 / 920 * 100vw);
         background: $color-white;
+        @include sp {
+            width: 100%;
+            margin-top: 0;
+            padding-bottom: 4rem;
+        }
         
         .news__catch {
             background: $main-color;
@@ -376,12 +546,21 @@ img {
             display: flex;
             align-items: center;
             gap: calc(60 / 1080 * 100vw);
+            @include sp {
+                height: auto;
+                padding: 1rem 0 1rem calc(21 / 345 * 100%); // 修正: 重複していた padding 指定を統合
+                margin-bottom: 1rem;
+            }
             
             h3 {
                 font-size: 2rem;
                 font-weight: 600;
                 color: $color-white;
                 margin-left: calc(45 / 960 * 100%);
+                @include sp {
+                    margin-left: 5%;
+                    margin: 0;
+                }
             }
         }
     }
@@ -394,6 +573,11 @@ img {
         transition: opacity 0.3s;
         margin-left: calc(45 / 960 * 100%);
         margin-right: calc(45 / 960 * 100%);
+        @include sp {
+            margin-left: 5%;
+            margin-right: 5%;
+            padding-bottom: 1.3rem;
+        }
         &:hover {
             opacity: 0.7;
         }
@@ -404,20 +588,47 @@ img {
         font-weight: 500;
         width: calc(53 / 1080 * 100vw);
         margin-top: calc(66 / 960 * 100%);
+        @include sp {
+            width: auto;
+            padding-top: 0;
+            padding-left: calc(5 / 345 * 100%);
+            white-space: nowrap;
+
+        }
     }
     
     &__text {
-        font-size: 1.8rem;
-        line-height: calc(25 / 18);
-        font-weight: 500;
         flex: 1;
-        margin-top: calc(27 / 960 * 100%);
-        margin-left: calc(170 / 960 * 100%);
+        p {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-top: calc(27 / 960 * 100%);
+            margin-left: calc(170 / 960 * 100%);
+            line-height: calc(25 / 18);
+        }
+
+        @include sp {
+            p {
+                margin-top: 1.9rem;
+                margin-right: calc(7 / 345 * 100%);
+                margin-left: calc(30 / 345 * 100%);
+            }
+        }
     }
-    
+    &__article-link:nth-of-type(3) {
+        @include sp {
+            .news__text p {
+                margin-right: calc(18 / 345 * 100%);
+            }
+        }
+    }
     &__more {
         text-align: right;
         margin-top: 1.5rem;
+        @include sp {
+            margin-right: 5%;
+        }
         a {
             font-family: "Yu Mincho", serif;
             font-size: 2rem;
@@ -430,6 +641,11 @@ img {
             padding-right: 40px;
             cursor: pointer;
             transition: opacity 0.3s;
+            @include sp {
+                font-size: 1.75rem;
+                top: calc(10 / 345 * 100vw);
+                left: calc(2 / 345 * 100vw);
+            }
             
             &:hover {
                 opacity: 0.7;
@@ -446,6 +662,13 @@ img {
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: right bottom;
+                @include sp {
+                    top: 90%;
+                    transform: translate(-40%, -40%); // 修正: 競合して無効化されていた translateY/X を統合
+                    right: 0;
+                    bottom: auto;
+                    width: calc(1020 / 345 * 100%);
+                }
             }
         }
     }
@@ -454,11 +677,18 @@ img {
 // company
 .company {
     padding: 4.9rem 0 13.8rem;
+    @include sp {
+        padding: 1.9rem 0 5rem;
+    }
     &__title {
         @include title;
     }
     &-item {
         position: relative; 
+        @include sp {
+            display: flex;
+            flex-direction: column;
+        }
         
         &__map {
             position: relative;
@@ -466,9 +696,14 @@ img {
             width: calc(600 / 920 * 100%);
             z-index: 20;
             margin-top: 7rem;
+            @include sp {
+                width: 100%;
+                margin-top: 2rem;
+                aspect-ratio: 315 / 300;
+            }
             iframe {
-                width: 100%;  // 親の幅（calcの結果）に合わせる
-                height: 100%; // 親の高さ（300px）に合わせる
+                width: 100%;  
+                height: 100%; 
                 border: 0;
             }
         }
@@ -486,16 +721,21 @@ img {
             display: flex;
             flex-direction: column;
             text-align: left;
-            display: flex;
             justify-content: flex-end;
             padding: 2rem 0.5rem 2.2rem 22rem;
+            font-style: normal; // 修正: addressタグのデフォルト(italic)をリセットし、子要素へ一括適用
+            @include sp {
+                position: relative;
+                width: 100%;
+                bottom: 0;
+                margin-top: 1.9rem;
+                padding: 2rem 6.2% 4.1%; // 修正: 上書きし合っていた padding を統合
+                justify-content: flex-start;
+            }
         }
-        &__address {
-            font-style: initial;
-        }
+        // 修正: 冗長だった font-style: initial; と空の @include sp {} を各子要素から削除
         &__name p {
             font-size: 2rem;
-            font-style: initial;
             margin: 0;
         }
         &__address p{
@@ -511,22 +751,22 @@ img {
                 pointer-events: none;
                 text-decoration: none;
                 color: $color-white;
-                font-style: initial;
             }
             span {
                 font-size: 1.6rem;
-                font-style: initial;
             }
         }
         &__mail {
             margin-top: 1.2rem;
             font-size: 1.6rem;
             margin-bottom: 2.1rem;
-            font-style: initial;
+            @include sp {
+                margin-top: 1.4rem;
+                margin-bottom: 0;
+            }
             a {
                 transition: opacity 0.4s;
                 color: $color-white;
-                font-style: initial;
                 
                 &:hover { 
                     opacity: 0.7;
@@ -540,30 +780,63 @@ img {
 .contact {
     padding: 4.9rem 2rem 8rem;
     background: $background;
+    @include sp {
+        padding: 1.9rem 3rem 5rem;
+    }
     &__title {
         @include title;
+        p {
+            @include sp {
+                text-indent: 0.5em;
+                letter-spacing: 0.24em; // 修正: % 指定を em に変更
+            }
+        }
     }
     &__contents {
         width: calc(800 / 880 * 100%);
         max-width: 800px;
         margin: 3.8rem auto 0;
         box-sizing: border-box;
+        @include sp {
+            width: 100%;
+            margin-top: 3.7rem;
+        }
     }
     &__text {
         font-size: 2rem;
+        line-height: calc(33 / 20);
         font-weight: 500;
         text-align: left;
         margin-top: 1rem;
+        @include sp {
+            margin: 0;
+        }
     }
     &__items {
         display: flex;
         flex-direction: column;
         row-gap: 3rem;
+        @include sp {
+            row-gap: 2rem;
+        }
     }
     &__item {
         display: flex;
         align-items: flex-start;
         width: 100%;
+        @include sp {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &:nth-child(2) {
+            @include sp {
+                flex-direction: row; 
+                align-items: center;
+                gap: calc(22 / 345 * 100%);
+            }
+        } // 修正: 閉じタグの不足によるネスト構造の崩れ（下の :has が効かなくなっていた問題）を解消
+
         &:has(.contact__input--checkbox),
         &:has(.contact__policy),
         &:has(textarea) {
@@ -577,8 +850,12 @@ img {
     }
     &__label {
         font-size: 2rem;
+        line-height: calc(27 / 20);
         font-weight: 500;
         margin-top: 1.3rem; 
+        @include sp {
+            margin: 0;
+        }
 
         p {
             margin: 0;
@@ -587,42 +864,86 @@ img {
         label {
             display: flex;
             align-items: center;
-            
+            @include sp {
+                display: block;
+                text-align: left;
+            }
         }
     }
     &__item:nth-child(1) {
         margin-top: 4.9rem;
+        @include sp { 
+            margin-top: 2.2rem; 
+        }
     }
     &__item:nth-child(2) {
-        margin-top: 1rem;
+        margin-top: 1.2rem;
     }
     &__item:nth-child(3) {
         margin-top: 1.9rem;
-        letter-spacing: -4%;
+        letter-spacing: -0.04em;
+        @include sp {
+            margin-top: 1.6rem;
+            letter-spacing: 0;
+        }
     }
     &__item:nth-child(4) {
         margin-top: 1.8rem;
+        @include sp {
+            margin-top: 1.3rem;
+        }
     }
     &__item:nth-child(5) {
         margin-top: 1.8rem;
+        @include sp {
+            margin-top: 1.4rem;
+        }
     }
     &__item:nth-child(6) {
         margin-top: 0.7rem;
+        @include sp {
+            margin-top: 0.7rem;
+        }
+    }
+    &__item:nth-child(7) {
+        @include sp {
+            margin-top: -1rem;
+        }
     }
     &__input {
         flex: 1;
         height: calc(50 / 800 * 100%);
+        @include sp {
+            width: 100%;
+            height: auto;
+        }
         .contact__item:nth-child(1) & {
             margin-left: calc(110 / 920 * 100%);
+            @include sp { 
+                margin-left: 0; 
+                margin-top: 0.4rem; 
+            }
         }
         .contact__item:nth-child(2) & {
             margin-left: calc(148 / 920 * 100%);
+            @include sp { 
+                margin-left: calc(30 / 345 * 100%); 
+                margin-top: 0; 
+            }
         }
         .contact__item:nth-child(3) & {
             margin-left: calc(25 / 920 * 100%); 
+            @include sp { 
+                margin-left: 0; 
+                margin-top: 0.4rem; 
+            }
         }
         .contact__item:nth-child(4) & {
             margin-left: calc(33 / 920 * 100%); 
+            @include sp { 
+                margin-left: 0; 
+                margin-top: 0.2rem; 
+            }
         }
         input[type="text"],
         input[type="email"],
@@ -631,14 +952,17 @@ img {
             width: 100%;
             padding: 1.2rem 2rem;
             font-size: 1.8rem;
-            border: 1px solid #ddd;
             background: $color-white;
             box-sizing: border-box;
             font-family: inherit;
             outline: none;   
-            border: none;         
+            border: none; // 修正: 直前で指定されていた border: 1px solid #ddd; を上書きし完全に無効にしていたため、競合していた上の指定を削除
             &::placeholder {
                 color: rgba(0, 0, 0, 0.3);
+            }
+            @include sp {
+                font-size: 1.6rem;
+                padding: 1.3rem 2rem;
             }
         }
         select {
@@ -646,6 +970,8 @@ img {
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z" fill="%234d9600"/></svg>');
             background-repeat: no-repeat;
             background-position: right 1.5rem center;
+            background-size: 20px auto;
+            padding: 1.7rem;
             cursor: pointer;
         }
         textarea {
@@ -654,26 +980,38 @@ img {
             line-height: 1.5;
             aspect-ratio: 800 / 200;
             margin-top: 1.1rem;
+            @include sp {
+                aspect-ratio: auto;
+                margin-top: 0.2rem;
+                aspect-ratio: 315 / 200;
+            }
         }
         &--radio {
             display: flex;
             align-items: center;
             gap: 4rem;
             padding-top: 1.5rem;
+            @include sp {
+                gap: calc(53 / 345 * 100%);
+                padding-top: 0;
+                margin: 0;
+            }
             label {
                 display: flex;
                 align-items: center;
                 font-size: 1.6rem;
                 cursor: pointer;
+                @include sp {
+                    font-size: 1.8rem;
+                }
 
                 input[type="radio"] {
                     margin-right: 0.8rem;
                     width: 2rem;
                     height: 2rem;
-                    appearance: none !important; // これを追加
-                    border: none !important; // !importantで強制
+                    appearance: none !important; 
                     background: #fff !important;
-                    border: none;
+                    border: none !important; // 修正: 重複していた border: none; を削除し !important のみ残す
                     border-radius: 50%;
                     cursor: pointer;
 
@@ -690,6 +1028,11 @@ img {
             row-gap: calc(12 / 920 * 100vw);
             margin-top: 1rem;
             margin-left: -0.3rem;
+            @include sp {
+                margin-left: 0;
+                margin-top: 0;
+                row-gap: calc(4 / 345 * 100vw);
+            }
 
             label {
                 display: flex;
@@ -700,15 +1043,22 @@ img {
                 width: 25%;
                 box-sizing: border-box;
                 column-gap: calc(70 / 920 * 100%);
+                @include sp {
+                    width: 50%; 
+                    font-size: 1.6rem;
+                    column-gap: calc(22 / 345 * 100%);
+                    margin-bottom: 0rem;
+                }
                 input[type="checkbox"] {
                     width: 2rem;
                     height: 2rem;
-                    appearance: none !important; // これを追加
-                    -webkit-appearance: none !important; // これを追加
-                    border: none !important; // !importantで強制
+                    appearance: none !important; 
+                    -webkit-appearance: none !important; 
                     background: #fff !important;
-                    border: none;
+                    border: none !important; // 修正: 重複していた border: none; を削除
                     cursor: pointer;
+                    margin-left: 0;
+                    margin-right: 0;
 
                     &:checked {
                         background: $main-color !important;
@@ -719,31 +1069,45 @@ img {
         }
     }
     
-    // 個人情報保護方針のネスト修正
     &__policy {
         width: 100%;
+        @include sp {
+            margin-top: 0rem;
+        }
 
         &-title { 
             margin-bottom: 1rem;
             font-size: 2rem;
             font-weight: 500;
+            @include sp {
+                margin-bottom: 0.1rem;
+            }
         }
         &-box {
             width: 100%;
             background: $color-white;
-            border: 1px solid #ccc;
             padding: 4rem; 
             padding-right: 6rem;
             overflow-y: scroll;
             box-sizing: border-box;
             aspect-ratio: 800 / 300;
-            border: none;
+            border: none; // 修正: 上部で border: 1px solid #ccc; と競合・上書きしていたため、上の指定を削除
+            @include sp {
+                padding: 2rem;
+                aspect-ratio: auto;
+                aspect-ratio: 315 / 323;
+            }
 
             p {
-                font-size: 1.8rem; // 可読性を上げるため少しサイズダウン
+                font-size: 1.8rem; 
                 line-height: calc(31 / 18);
                 font-weight: 500;
                 margin: 0;
+                @include sp {
+                    padding: 1.1rem 3rem 1.1rem 1rem;
+                    font-size: 1.6rem;
+                    line-height: calc(33 / 16);
+                }
             }
         }
     }
@@ -763,6 +1127,12 @@ img {
             cursor: pointer;
             transition: opacity 0.3s;
             margin-top: 4rem;
+            @include sp {
+                width: 100%;
+                aspect-ratio: 315 / 50;
+                font-size: 2rem;
+                margin-top: 1.8rem;
+            }
 
             &:hover {
                 opacity: 0.7;
@@ -775,12 +1145,13 @@ img {
 .footer {
     padding: 6.5rem 0 0; 
     background: #fff;
-
+    @include sp {
+        padding: 3.5rem 0 0;
+    }
     .inner {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-inline: 2rem;
     }
 
     &__title {
@@ -805,6 +1176,14 @@ img {
             border-top: 1px solid rgba(0, 0, 0, 1);
             padding-top: 2.8rem;
             width: calc(722 / 920 * 100%);
+            @include sp {
+                width: 100%;
+                gap: 0.5rem 2rem;
+                margin-top: 0.1rem;
+                width: 100%;
+                column-gap: calc(34 / 345 * 100%);
+                padding-top: 2rem;
+            }
             li a {
                 color: rgba(0, 0, 0, 1);
                 text-decoration: none;
@@ -812,6 +1191,8 @@ img {
                 line-height: calc(33 / 18);
                 font-weight: 500;
                 transition: opacity 0.4s;
+                @include sp {
+                }
                 &:hover {
                     opacity: 0.7;
                 }
@@ -829,18 +1210,20 @@ img {
             list-style: none;
             margin-top: 1.6rem;
             padding: 0;
+            @include sp {
+                margin-top: 2rem;
+                gap: calc(32 / 345 * 100%);
+            }
         }
 
         .sns-icon {
             display: block;
-            width: 2,4rem;
+            width: 2.4rem;
             height: 2.4rem;
             transition: transform 0.3s, opacity 0.3s;
-            width: 100%;
-            height: 100%;
             object-fit: contain;
-            img {
-                object-fit: contain;
+            @include sp {
+                width: 2.8rem;
             }
 
             &:hover {
@@ -849,45 +1232,28 @@ img {
         }
     }
 
-    // absolute配置を解除し、自然なブロック要素として配置
     &__copyright {
         background: $main-color;
         color: $color-white;
         font-weight: 500;
-        height: 9.2rem;
         display: flex;
         justify-content: center; 
         align-items: center;
         width: 100%;
-        max-width: none;
-        justify-content: center;
         margin-top: 7.2rem;
+        @include sp {
+            margin-top: 4.2rem;
+            padding: 0;
+            text-align: center;
+        }
         .copyright {
             font-size: 2rem;
+            line-height: calc(33 / 20);
             opacity: 0.8;
-        }
-    }
-
-    // レスポンシブ対応
-    @include sp {
-        padding: 5rem 0 0;
-
-        &__title h2 {
-            font-size: 2rem;
-        }
-
-        &__nav ul {
-            gap: 1.5rem 2rem;
-            li a {
-                font-size: 1.2rem;
-            }
-        }
-
-        &__sns {
-            padding-top: 2rem;
-            margin-bottom: 4rem;
-            ul {
-                gap: 2rem;
+            @include sp {
+                line-height: calc(25 / 20);
+                margin: 0;
+                padding: 2.2rem;
             }
         }
     }
