@@ -128,11 +128,12 @@ img {
 .hamburger {
   position: relative;
   display: block;
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 50px;
   background: #fff;
-  border: 2px solid #000;
   margin-left: auto;
+  z-index: 999;
+  border: none;
 }
 
 /* 三本線 */
@@ -143,9 +144,9 @@ img {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 44px;
-  height: 4px;
-  background: #000;
+  width: 32px;
+  height: 2px;
+  background: rgb(77, 150, 0);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -158,32 +159,84 @@ img {
   top: 70%;
 }
 
+/* メニューが開いた時の三本線 */
+.hamburger.is-active span:nth-of-type(1) {
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+          transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.hamburger.is-active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.hamburger.is-active span:nth-of-type(3) {
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+          transform: translate(-50%, -50%) rotate(-45deg);
+}
+
 /* ナビゲーション（中身） */
 .header-menu {
   position: fixed;
-  width: 320px;
-  top: 78px;
+  width: 30rem;
+  height: 3.48rem;
+  top: 5rem;
   right: 0;
   bottom: 0;
-  border: 2px solid #000;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
   -webkit-transition: -webkit-transform 0.4s;
   transition: -webkit-transform 0.4s;
   transition: transform 0.4s;
   transition: transform 0.4s, -webkit-transform 0.4s;
+  background: rgb(77, 150, 0);
+  z-index: 200;
+}
+
+/* 表示状態 */
+.header-menu.is-open {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 .header-menu ul {
   margin: 0;
-  padding: 36px;
-  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 2rem;
+  text-align: left;
   list-style: none;
-  font-size: 24px;
+  font-size: 1.8rem;
+  color: rgb(255, 255, 255);
 }
 
 .header-menu ul li:not(:last-of-type) {
-  margin-bottom: 36px;
+  margin-bottom: 25px;
+}
+
+/* 黒背景（オーバーレイ） */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+  z-index: 10;
+}
+
+/* メニューが開いたときの黒背景 */
+.overlay.is-open {
+  opacity: 1;
+  visibility: visible;
 }
 
 .fv {

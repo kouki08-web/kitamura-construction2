@@ -131,11 +131,13 @@ img {
 .hamburger {
     position: relative;
     display: block;
-    width: 80px;
-    height: 80px;
+    width: 72px;
+    height: 50px;
     background: #fff;
-    border: 2px solid #000;
     margin-left: auto;
+    z-index: 999;
+    border: none;
+    
 }
 /* 三本線 */
 .hamburger span {
@@ -144,9 +146,9 @@ img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 44px;
-    height: 4px;
-    background: #000;
+    width: 32px;
+    height: 2px;
+    background: $main-color;
     transition: .4s;
 }
 .hamburger span:nth-of-type(1) {
@@ -155,27 +157,68 @@ img {
 .hamburger span:nth-of-type(3) {
     top: 70%;
 }
+/* メニューが開いた時の三本線 */
+.hamburger.is-active span:nth-of-type(1) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.hamburger.is-active span:nth-of-type(2) {
+    opacity: 0;
+}
+.hamburger.is-active span:nth-of-type(3) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
 /* ナビゲーション（中身） */
 .header-menu {
     position: fixed;
-    width: 320px;
-    top: 78px;
+    width: 30rem;
+    height: 3.48rem;
+    top: 5rem;
     right: 0;
     bottom: 0;
-    border: 2px solid #000;
     transform: translateX(100%);
     transition: transform .4s;
+    background: $main-color;
+    z-index: 200;
+}
+/* 表示状態 */
+.header-menu.is-open {
+    transform: translateX(0);
 }
 .header-menu ul {
     margin: 0;
-    padding: 36px;
-    text-align: center;
+    align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    text-align: left;
     list-style: none;
-    font-size: 24px;
+    font-size: 1.8rem;
+    color: $color-white;
 }
 .header-menu ul li:not(:last-of-type) {
-    margin-bottom: 36px;
+    margin-bottom: 25px;
 }
+/* 黒背景（オーバーレイ） */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s;
+    z-index: 10;
+}
+/* メニューが開いたときの黒背景 */
+.overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
 // fv
 .fv {
     position: relative;
