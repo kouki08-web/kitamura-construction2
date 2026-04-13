@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>株式会社北村建設興業</title>
     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="./images/favicon.ico">
 </head>
@@ -45,12 +46,45 @@
 
     <main>
         <section class="fv">
-            <div class="fv__image">
-                <picture>
-                    <source media="(min-width: 768px)" srcset="./images/fv-pc-01.jpg">
-                    <img src="./images/fv-sp-01.jpg" alt="永遠も。瞬間も。あなたと共に。">
-                </picture>
-            </div>
+            <div class="swiper">
+                <div class="fv__slides swiper-wrapper">
+                    
+                    <div class="fv__slide fv-slide swiper-slide">
+                        <span>
+                            <div class="fv-slide__image">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="./images/fv-pc-01.jpg">
+                                    <img src="./images/fv-sp-01.jpg" alt="永遠も。瞬間も。あなたと共に。">
+                                </picture>
+                            </div>
+                        </span>
+                    </div>
+                    
+                    <div class="fv__slide fv-slide swiper-slide">
+                        <span>
+                            <div class="fv-slide__image">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="./images/fv-pc-02.jpg">
+                                    <img src="./images/fv-sp-02.jpg" alt="永遠も。瞬間も。あなたと共に。">
+                                </picture>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="fv__slide fv-slide swiper-slide">
+                        <span>
+                            <div class="fv-slide__image">
+                                <picture>
+                                    <source media="(min-width: 768px)" srcset="./images/fv-pc-03.jpg">
+                                    <img src="./images/fv-sp-03.jpg" alt="永遠も。瞬間も。あなたと共に。">
+                                </picture>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div> 
             <div class="fv__contents">
                 <div class="fv__catch">
                     <h2>永遠も。<br class="sp">瞬間も。<br>あなたと共に。</h2>
@@ -511,6 +545,7 @@ FAX 000-000-0000<br>
         </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html
