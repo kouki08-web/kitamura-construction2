@@ -11,36 +11,38 @@
 </head>
 <body>
     <header class="header">
-        <button id="js-hamburger" class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="header-menu">
-            <nav>
-                <ul>
-                    <li>ABOUT</li>
-                    <li>SERVICE</li>
-                    <li>WORKS</li>
-                    <li>NEWS</li>
-                    <li>COMPANY</li>
-                    <li>CONTACT</li>
-                </ul>
-            </nav>
-        </div>
-        <div id="js-overlay" class="overlay"></div>
         <div class="inner">
-            <h1 class="header__logo"><a href="#">株式会社北村建設興業</a></h1>
-            <nav class="header__nav pc">
-                <ul>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#service">SERVICE</a></li>
-                    <li><a href="#works">WORKS</a></li>
-                    <li><a href="#news">NEWS</a></li>
-                    <li><a href="#company">COMPANY</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
-                </ul>
-            </nav>
+            <button id="js-hamburger" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="header-menu">
+                <nav>
+                    <ul>
+                        <li>ABOUT</li>
+                        <li>SERVICE</li>
+                        <li>WORKS</li>
+                        <li>NEWS</li>
+                        <li>COMPANY</li>
+                        <li>CONTACT</li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="js-overlay" class="overlay"></div>
+            <div class="inner">
+                <h1 class="header__logo"><a href="#">株式会社北村建設興業</a></h1>
+                <nav class="header__nav pc">
+                    <ul>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#service">SERVICE</a></li>
+                        <li><a href="#works">WORKS</a></li>
+                        <li><a href="#news">NEWS</a></li>
+                        <li><a href="#company">COMPANY</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -50,35 +52,35 @@
                 <div class="fv__slides swiper-wrapper">
                     
                     <div class="fv__slide fv-slide swiper-slide">
-                        <span>
+                        <div class="fv-slide__inner">
                             <div class="fv-slide__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/fv-pc-01.jpg">
                                     <img src="./images/fv-sp-01.jpg" alt="永遠も。瞬間も。あなたと共に。">
                                 </picture>
                             </div>
-                        </span>
+                        </div>
                     </div>
                     
                     <div class="fv__slide fv-slide swiper-slide">
-                        <span>
+                        <div class="fv-slide__inner">
                             <div class="fv-slide__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/fv-pc-02.jpg">
                                     <img src="./images/fv-sp-02.jpg" alt="永遠も。瞬間も。あなたと共に。">
                                 </picture>
                             </div>
-                        </span>
+                        </div>
                     </div>
                     <div class="fv__slide fv-slide swiper-slide">
-                        <span>
+                        <div class="fv-slide__inner">
                             <div class="fv-slide__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/fv-pc-03.jpg">
                                     <img src="./images/fv-sp-03.jpg" alt="永遠も。瞬間も。あなたと共に。">
                                 </picture>
                             </div>
-                        </span>
+                        </div>
                     </div>
                 </div>
                 
@@ -92,7 +94,7 @@
             </div>
         </section>
     
-        <section id="about" class="about">
+        <section id="about" class="about js-fade">
             <div class="about__contents">
                 <div class="about__image">
                     <picture>
@@ -107,7 +109,7 @@
             </div>
         </section>
 
-        <section id="service" class="service">
+        <section id="service" class="service js-fade">
             <div class="inner">
                 <div class="service__title">
                     <h2>SERVICE</h2>
@@ -163,7 +165,7 @@
             </div>
         </section>        
         
-        <section id="works" class="works">
+        <section id="works" class="works js-fade">
             <div class="inner">
                 <div class="works__title">
                     <h2>WORKS</h2>
@@ -172,7 +174,7 @@
                 <div class="works__contents">
                     <div class="works__items">
                         
-                        <div class="works__item">
+                        <div class="works__item js-modal-target" data-modal-img="./images/model-pc.jpg">
                             <div class="works__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/works-pc-01.jpg">
@@ -184,7 +186,7 @@
                             </div>
                         </div>
                         
-                        <div class="works__item">
+                        <div class="works__item js-modal-target" data-modal-img="./images/modal-01-large.jpg">
                             <div class="works__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/works-pc-02.jpg">
@@ -196,7 +198,7 @@
                             </div>
                         </div>
                         
-                        <div class="works__item">
+                        <div class="works__item js-modal-target" data-modal-img="./images/modal-01-large.jpg">
                             <div class="works__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/works-pc-03.jpg">
@@ -208,7 +210,7 @@
                             </div>
                         </div>
                         
-                        <div class="works__item">
+                        <div class="works__item js-modal-target" data-modal-img="./images/modal-01-large.jpg">
                             <div class="works__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/works-pc-04.jpg">
@@ -225,7 +227,7 @@
             </div>
         </section>
 
-        <section id="news" class="news">
+        <section id="news" class="news js-fade">
             <div class="inner">
                 <div class="news__title">
                     <h2>NEWS</h2>
@@ -308,7 +310,7 @@
             </div>
         </section>
 
-        <section id="company" class="company">
+        <section id="company" class="company js-fade">
             <div class="inner">
                 <div class="company__title">
                     <h2>COMPANY</h2>
@@ -339,7 +341,7 @@
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <section id="contact" class="contact js-fade">
             <div class="inner">
                 <div class="contact__title">
                     <h2>CONTACT</h2>
@@ -470,7 +472,7 @@
 ・業務を円滑に進める等の理由で外部事業者に取扱いを委託する場合。(この場合には、十分な保護水準を備えている委託先を選定し、漏えいや再提供を防止するために契約により義務づける等の方法によって、適切な管理を実施します)<br>
 ・法令等により開示を要求された場合<br>
 ・人の生命、身体又は財産の保護のために必要であって、お客様の同意を得ることが困難である場合<br>
-・国の機関や地方公共団体又はসংযোগその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、お客様の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがある場合<br><br>
+・国の機関や地方公共団体又はその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、お客様の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがある場合<br><br>
 
 個人情報の開示手続(法25条)<br>
 お客様本人の個人情報に関する保有データの開示請求があった場合には、ご本人であることを運転免許証・パスポート等の身分証明書で確認させていただいた上、本人確認が終了後、速やかに開示させていただきます。<br><br>
@@ -497,7 +499,16 @@ FAX 000-000-0000<br>
             </div>
         </section>
     </main>
+        <div id="js-modal" class="modal">
+            <div class="modal__bg" id="js-modal-bg"></div>
+            <div class="modal__content">
+                <img src="./images/icon-ellipse.svg" alt="" id="js-modal-img">
+            </div>
+        </div>
 
+        <a href="#" id="js-pagetop" class="pagetop" aria-label="ページトップへ戻る">
+            <img src="./images/icon-top.svg" alt="">
+        </a>
     <footer class="footer">
         <div class="inner">
             <div class="footer__title">
@@ -548,4 +559,4 @@ FAX 000-000-0000<br>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
-</html
+</html>
