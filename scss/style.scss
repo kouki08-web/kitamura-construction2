@@ -73,7 +73,8 @@ img {
 }
 @media (max-width: 767px) {
     .inner {
-        max-width: 315px;
+        max-width: none;  // 幅の制限をなくす
+        padding-inline: 3rem;
     }
 }
 /* --- フェードインアニメーション --- */
@@ -98,7 +99,6 @@ img {
     z-index: 999;
     background: rgba(0, 0, 0, 0.15);
     color: $color-white;
-    padding: 0;
 
     @include sp {
         height: 5rem;
@@ -107,9 +107,10 @@ img {
     .inner {
         height: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
-        max-width: none;
+        padding: 0;
+        padding-inline: 0;
     }
 
     &__logo a {
@@ -126,6 +127,8 @@ img {
         }
         @include sp {
             height: 5rem;
+            font-size: 2rem;
+            padding-left: 2rem;
         }
 
         &:hover {
@@ -138,6 +141,7 @@ img {
         align-items: center;
         column-gap: 3.1rem;
         list-style: none;
+        padding-left: calc(111 / 1080 * 100vw);
 
         li a {
             display: inline-block;
@@ -150,7 +154,7 @@ img {
             @media (max-width: 910px) {
                 font-size: 1.4rem;
             }
-            
+
             &::after {
                 content: '';
                 position: absolute;
@@ -313,13 +317,13 @@ img {
         }
     }
     &__catch h2 {
-        font-size: 4rem;
+        font-size: calc(40 / 1080 * 100vw);
         line-height: calc(70 / 40);
         color: $color-white;
         font-weight: 600;
         letter-spacing: 0.29em;
         @include sp {
-            font-size: 3rem;
+            font-size: calc(30 / 375 * 100vw);
             line-height: calc(60 / 30);
         }
     }
@@ -328,7 +332,6 @@ img {
     transition-timing-function: linear;
 }
 
-// 修正: span要素からdivクラスへ変更したことに伴うセレクタの修正
 .swiper-slide .fv-slide__inner {
     width: 100vw;
     aspect-ratio: 1080 / 800;
@@ -380,25 +383,26 @@ img {
         }
 
         h2 {
-            font-size: 3rem;
+            font-size: calc(30 / 1080 * 100vw);
             margin-left: calc(38 / 1080 * 100vw);
             font-weight: 500;
             letter-spacing: 0.18em;
             
             @include sp {
-                font-size: 2.4rem;
+                font-size: calc(24 / 375 * 100vw);
                 letter-spacing: 0.25em;
+                margin-left: calc(18 / 375 * 100vw);
             }
         }
 
         p {
-            font-size: 1.8rem;
+            font-size: calc(18 / 1080 * 100vw);
             line-height: 267%;
             letter-spacing: 0.39em;
             font-weight: 500;
 
             @include sp {
-                font-size: 1.6rem;
+                font-size: calc(16 / 375 * 100vw);
                 line-height: 162%;
                 letter-spacing: 0.25em;
             }
@@ -651,7 +655,7 @@ img {
     &__items {
         display: flex;
         column-gap: calc(60 / 920 * 100%);
-        margin-top: 6.9rem; 
+        margin-top: 6.8rem; 
         @include sp {
             flex-direction: column;
             row-gap: 5rem;
@@ -702,7 +706,7 @@ img {
         transition: opacity 0.3s;
         margin-left: calc(45 / 960 * 100%);
         margin-right: calc(45 / 960 * 100%);
-        padding-top: 2.8rem; 
+        padding-top: 2.7rem; 
         padding-bottom: 1.2rem;
         @include sp {
             margin-left: 5%;
@@ -753,13 +757,16 @@ img {
             margin-top: calc(8 / 960 * 100%); 
             margin-left: calc(195 / 960 * 100%);
             line-height: calc(25 / 18);
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
         }
 
         @include sp {
             p {
-                // 修正: 親のpaddingに移動したため削除
                 margin-top: 0;
-                margin-right: calc(7 / 345 * 100%);
+                margin-right: calc(1 / 345 * 100%);
                 margin-left: calc(30 / 345 * 100%);
             }
         }
@@ -768,7 +775,7 @@ img {
         margin-top: 1rem;
         @include sp {
             .news__text p {
-                margin-right: calc(18 / 345 * 100%);
+                margin-right: calc(10 / 345 * 100%);
             }
         }
     }
@@ -776,7 +783,7 @@ img {
         margin-top: 1rem;
         @include sp {
             .news__text p {
-                margin-right: calc(18 / 345 * 100%);
+                margin-right: calc(10 / 345 * 100%);
             }
         }
     }
@@ -839,7 +846,7 @@ img {
 
 // company
 .company {
-    padding: 4.9rem 0 13.8rem;
+    padding: 4.9rem 0 13.7rem;
     @include sp {
         padding: 1.9rem 0 5rem;
     }
@@ -879,13 +886,13 @@ img {
             color: $color-white;
             position: absolute;
             right: 0;
-            bottom: -5.8rem;
+            bottom: -5.7rem;
             z-index: 10;
             display: flex;
             flex-direction: column;
             text-align: left;
             justify-content: flex-end;
-            padding: 2rem 0.5rem 2.2rem 22rem;
+            padding: 2rem 0.5rem 2.2rem calc(258 / 1080 * 100%);
             font-style: normal; 
             @include sp {
                 position: relative;
@@ -1046,7 +1053,7 @@ img {
         margin-top: 2.2rem;
         letter-spacing: -0.04em;
         @include sp {
-            margin-top: 1.6rem;
+            margin-top: 1.4rem;
             letter-spacing: 0;
         }
     }
@@ -1091,7 +1098,7 @@ img {
             margin-left: calc(148 / 920 * 100%);
             @include sp { 
                 margin-left: calc(30 / 345 * 100%); 
-                margin-top: 0; 
+                margin-top: 0.4rem; 
             }
         }
         .contact__item:nth-child(3) & {
@@ -1274,10 +1281,10 @@ img {
 
     &__submit {
         text-align: center;
-        margin-top: 5.2rem;
+        margin-top: 5.1rem;
 
         @include sp {
-            margin-top: 3.2rem;
+            margin-top: 3rem;
         }
 
         button {
@@ -1311,7 +1318,7 @@ img {
 
 // footer
 .footer {
-    padding: 6.4rem 0 0; 
+    padding: 6.6rem 0 0;
     background: #fff;
     @include sp {
         padding: 3.5rem 0 0;
@@ -1484,7 +1491,7 @@ img {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.5);
         cursor: pointer; 
     }
 

@@ -122,3 +122,27 @@ $(function () {
         }
     });
 });
+
+$(function() {
+    $('.js-modal-target').on('click', function() {
+        // クリックされた要素から画像とタイトルのデータを取得
+        const modalImg = $(this).data('modal-img');
+        const modalTitle = $(this).data('modal-title'); // タイトルを取得
+
+        // モーダル内の要素にセット
+        $('#js-modal-img').attr('src', modalImg);
+        $('#js-modal-title').text(modalTitle); // テキストをセット
+
+        // モーダルを表示
+        $('#js-modal').addClass('is-open');
+        $('body').addClass('no-scroll');
+    });
+
+    // 閉じる処理（背景クリック時）
+    $('#js-modal-bg').on('click', function() {
+        $('#js-modal').removeClass('is-open');
+        $('body').removeClass('no-scroll');
+        // 次回のために中身を空にしておく（任意）
+        $('#js-modal-title').text('');
+    });
+});
