@@ -47,7 +47,7 @@ body {
     letter-spacing: 0;
 }
 a, button {
-    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    transition: opacity 0.4s ease, transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 /* common */
@@ -141,7 +141,7 @@ img {
         align-items: center;
         column-gap: 3.1rem;
         list-style: none;
-        padding-left: calc(111 / 1080 * 100vw);
+        padding-left: max(11.1rem, calc(111 / 1080 * 100%));
 
         li a {
             display: inline-block;
@@ -150,7 +150,7 @@ img {
             color: inherit;
             position: relative;
             padding-bottom: 0.45rem;
-            transition: color 0.3s;
+            transition: color 0.4s;
             @media (max-width: 910px) {
                 font-size: 1.4rem;
             }
@@ -163,7 +163,7 @@ img {
                 width: 0;
                 height: 2px;
                 background: #fff;
-                transition: width 0.3s ease;
+                transition: width 0.4s ease;
             }
 
             @media (hover: hover) {
@@ -591,6 +591,7 @@ img {
 } 
 
 // works
+// works
 .works {
     padding: 5rem 0 8.1rem;
     @include sp {
@@ -607,6 +608,9 @@ img {
     }
     &__items {
         display: flex;
+        /* ↓ アイテム群全体を中央に寄せるなら、これを追加！ */
+        justify-content: center; 
+        
         gap: calc(40 / 920 * 100%);
         @include sp {
             flex-wrap: wrap;
@@ -614,12 +618,16 @@ img {
         }
     }
     &__item {
+        // ▼ ここに追加！箱（アイテム）自体の幅を「親（920px）に対する割合」にします
+        width: calc(200 / 920 * 100%); 
+        
         @include sp {
             width: 100%;
         }
         
         .works__image {
-            width: calc(178 / 960 * 100vw);
+            // ▼ ここを修正！画像は親の箱（item）の幅に100%合わせます
+            width: 100%; 
             aspect-ratio: 200 / 200;
             @include sp {
                 width: 100%;
@@ -641,7 +649,6 @@ img {
         }
     }
 }
-
 // news
 .news {
     padding: 4.9rem 0 8.1rem;
@@ -703,7 +710,7 @@ img {
         border-bottom: 1px solid $main-color;
         text-decoration: none;
         color: inherit;
-        transition: opacity 0.3s;
+        transition: opacity 0.4s;
         margin-left: calc(45 / 960 * 100%);
         margin-right: calc(45 / 960 * 100%);
         padding-top: 2.7rem; 
@@ -739,6 +746,7 @@ img {
         font-size: 1.6rem;
         font-weight: 500;
         width: calc(53 / 1080 * 100vw);
+        white-space: nowrap;
         
         @include sp {
             width: auto;
@@ -805,7 +813,7 @@ img {
             position: relative;
             padding-right: calc(118 / 920 * 100%);
             cursor: pointer;
-            transition: opacity 0.3s, transform 0.3s; 
+            transition: opacity 0.4s, transform 0.3s; 
             
             @include sp {
                 font-size: 1.75rem;
@@ -1128,8 +1136,7 @@ img {
             outline: none;   
             border: none; 
             &::placeholder {
-                color: rgba(0, 0, 0, 0.3);
-            }
+                color: #A0A0A0;}
             @include sp {
                 font-size: 1.6rem;
                 padding: 1.3rem 2rem;
@@ -1145,11 +1152,12 @@ img {
             cursor: pointer;
         }
         textarea {
-            resize: vertical;
+            resize: none;
             min-height: 150px;
             line-height: 1.5;
             aspect-ratio: 800 / 200;
             margin-top: 1.1rem;
+            word-break: break-word;
             @include sp {
                 aspect-ratio: auto;
                 margin-top: 0.2rem;
@@ -1163,7 +1171,7 @@ img {
             padding-top: 1.3rem;
             @include sp {
                 gap: calc(53 / 345 * 100%);
-                padding-top: 0;
+                padding: 0;
                 margin: 0;
             }
             label {
@@ -1184,6 +1192,9 @@ img {
                     border: none !important; 
                     border-radius: 50%;
                     cursor: pointer;
+                    @include sp {
+                        margin-right: 0.8rem;
+                    }
 
                     &:checked {
                         background: $main-color !important;
@@ -1296,7 +1307,7 @@ img {
             aspect-ratio: 300 / 50;
             border: none;
             cursor: pointer;
-            transition: opacity 0.3s;
+            transition: opacity 0.4s;
             // 修正: margin-top: 4rem; を親の .contact__submit に移動・統合したため削除
             border: 2px solid $main-color;
             @media (hover: hover) {
@@ -1394,7 +1405,7 @@ img {
             display: block;
             width: 3rem;
             height: 3rem;
-            transition: transform 0.3s, opacity 0.3s;
+            transition: transform 0.4s, opacity 0.3s;
             object-fit: contain;
             @include sp {
                 width: 2.8rem;
@@ -1456,7 +1467,7 @@ img {
     border-radius: 50%;
     text-decoration: none;
     z-index: 100;
-    transition: opacity 0.3s, visibility 0.3s;
+    transition: opacity 0.4s, visibility 0.3s;
     font-size: 1.4rem;
     
     &.is-hidden {
@@ -1475,7 +1486,7 @@ img {
     z-index: 9999;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+    transition: opacity 0.4s, visibility 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
