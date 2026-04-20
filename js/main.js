@@ -146,3 +146,36 @@ $(function() {
         $('#js-modal-title').text('');
     });
 });
+$(function() {
+    // モーダルを開く処理
+    $('.js-modal-target').on('click', function() {
+        const imgSrc = $(this).data('modal-img');
+        const title = $(this).data('modal-title');
+
+        $('#js-modal-img').attr('src', imgSrc);
+        $('#js-modal-title').text(title);
+        $('#js-modal').addClass('is-open');
+        $('body').addClass('no-scroll'); // 背景スクロールを止める
+    });
+
+    // モーダルを閉じる処理（×ボタン または 黒い背景 をクリック）
+    $('#js-modal-close, #js-modal-bg').on('click', function() {
+        $('#js-modal').removeClass('is-open');
+        $('body').removeClass('no-scroll'); // スクロールを再開
+    });
+});
+$(function() {
+    // --- 既存のモーダル処理の下に以下を追記 ---
+
+    $(window).on('scroll', function() {
+        // FV（メインビジュアル）の高さを取得
+        const fvHeight = $('.fv').innerHeight();
+        
+        // スクロール量がFVの高さを超えたらクラスを付け外しする
+        if ($(window).scrollTop() > fvHeight - 80) { // 80はヘッダーの高さ分
+            $('.header').addClass('is-scrolled');
+        } else {
+            $('.header').removeClass('is-scrolled');
+        }
+    });
+});
