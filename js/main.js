@@ -1,178 +1,91 @@
-$("#js-hamburger").click(function () {
-    $(".hamburger").toggleClass("is-active");
-    $(".header-menu").toggleClass("is-open");
-    $("#js-overlay").toggleClass("is-open");
-});
-/* 黒背景クリックでメニューを閉じる */
-$("#js-overlay").click(function () {
-    $(".hamburger").removeClass("is-active");
-    $(".header-menu").removeClass("is-open");
-    $("#js-overlay").removeClass("is-open");
-});
-
-const swiper = new Swiper('.swiper', {
-    loop: true, // 無限ループさせる
-    autoplay: {
-        delay: 4000, // 4秒（4000ミリ秒）ごとに自動スライド
-        disableOnInteraction: false, // 矢印をクリックした後も自動再生を止めない
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-});
-
-/* ==============================================
-    画像拡大モーダルの処理
-   ============================================== */
-
 $(function () {
-    // 画像またはテキストをタップした時（要件2）
-    $('.js-modal-target').click(function () {
-        
-        // ★変更点：data-modal-img属性から専用の画像パスを取得する
-        let targetImg = $(this).attr('data-modal-img');
-        
-        // ★変更点：もし専用画像が設定されていなければ、今まで通り中の画像(src)を使う（保険の処理）
+    // ==========================================
+    // ハンバーガーメニュー
+    // ==========================================
+    $("#js-hamburger").click(function () {
+        $(".hamburger").toggleClass("is-active");
+        $(".header-menu").toggleClass("is-open");
+        $("#js-overlay").toggleClass("is-open");
+    });
+
+    $("#js-overlay").click(function () {
+        $(".hamburger").removeClass("is-active");
+        $(".header-menu").removeClass("is-open");
+        $("#js-overlay").removeClass("is-open");
+    });
+
+    // ==========================================
+    // Swiper の初期化
+    // ==========================================
+    const swiper = new Swiper('.swiper', {
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+
+    // ==========================================
+    // モーダル処理（重複を解消して統合）
+    // ==========================================
+    $('.js-modal-target').on('click', function () {
+        // data属性から画像とタイトルを取得
+        let targetImg = $(this).data('modal-img');
         if (!targetImg) {
-            targetImg = $(this).find('img').attr('src');
+            targetImg = $(this).find('img').attr('src'); // 保険の処理
         }
-        
-        // モーダル内の img タグに取得した画像パスをセット
+        const targetTitle = $(this).data('modal-title');
+
+        // モーダル内にセット
         $('#js-modal-img').attr('src', targetImg);
-        
-        // モーダルを表示
+        $('#js-modal-title').text(targetTitle);
+
+        // 表示・スクロール制御
         $('#js-modal').addClass('is-open');
-        
-        // 背景をスクロールさせない（要件5）
         $('body').addClass('no-scroll');
-        
-        // TOPに戻るボタンを非表示（要件4）
-        $('#js-pagetop').addClass('is-hidden');
+        $('#js-pagetop').addClass('is-hidden'); // TOPボタンを隠す
     });
 
-    // モーダルの薄暗い背景をタップした時（要件3）
-    $('#js-modal-bg').click(function () {
-        // モーダルを非表示
+    // モーダルを閉じる処理
+    $('#js-modal-close, #js-modal-bg').on('click', function () {
         $('#js-modal').removeClass('is-open');
-        
-        // 背景のスクロール制限を解除
         $('body').removeClass('no-scroll');
-        
-        // TOPに戻るボタンを再表示
         $('#js-pagetop').removeClass('is-hidden');
+        $('#js-modal-title').text(''); // 中身をリセット
     });
-});
 
-$(function () {
-    /* --- TOPボタンの表示・非表示 (要件5, 6) --- */
+    // ==========================================
+    // スクロールイベント（TOPボタン・フェードイン・ヘッダー背景）
+    // ==========================================
     const pagetop = $('#js-pagetop');
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 700) { // FVの高さを目安に調整（例: 700px）
-            pagetop.fadeIn(); // ふわっと出す
-        } else {
-            pagetop.fadeOut(); // 消す
-        }
-    });
+    pagetop.hide(); // 初期状態は非表示
 
-    /* --- スクロールで浮き出るアニメーション (要件3) --- */
-    $(window).scroll(function () {
-        $('.fade-in').each(function () {
-            const elemPos = $(this).offset().top;
-            const scroll = $(window).scrollTop();
-            const windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 150) {
+    $(window).on('scroll', function () {
+        const scroll = $(window).scrollTop();
+        const windowHeight = $(window).height();
+
+        // 1. TOPに戻るボタンの表示制御
+        if (scroll > 700) {
+            pagetop.fadeIn(300);
+        } else {
+            pagetop.fadeOut(300);
+        }
+
+        // 2. フェードインアニメーション (.js-fade)
+        $('.js-fade').each(function () {
+            const targetPosition = $(this).offset().top;
+            if (scroll > targetPosition - windowHeight + 200) {
                 $(this).addClass('is-visible');
             }
         });
-    });
-});
 
-/* ==============================================
-    スクロールでふわっと浮き出る（フェードイン）
-   ============================================== */
-$(window).scroll(function () {
-    const windowHeight = $(window).height();
-    const scroll = $(window).scrollTop();
-
-    $('.js-fade').each(function () {
-        const targetPosition = $(this).offset().top;
-        // 画面の少し手前（200px）でアニメーションを開始させる
-        if (scroll > targetPosition - windowHeight + 200) {
-            $(this).addClass('is-visible');
-        }
-    });
-});
-
-/* ==============================================
-    TOPに戻るボタンの表示・非表示制御
-   ============================================== */
-$(function () {
-    const pagetop = $('#js-pagetop');
-    
-    // 最初はボタンを隠しておく（念のためJS側でも制御）
-    pagetop.hide();
-
-    $(window).scroll(function () {
-        // スクロール量が 700px を超えたら表示（FVの高さに合わせて調整してください）
-        if ($(this).scrollTop() > 700) {
-            pagetop.fadeIn(300); // 0.3秒かけてフワッと出す
-        } else {
-            pagetop.fadeOut(300); // 0.3秒かけてフワッと消す
-        }
-    });
-});
-
-$(function() {
-    $('.js-modal-target').on('click', function() {
-        // クリックされた要素から画像とタイトルのデータを取得
-        const modalImg = $(this).data('modal-img');
-        const modalTitle = $(this).data('modal-title'); // タイトルを取得
-
-        // モーダル内の要素にセット
-        $('#js-modal-img').attr('src', modalImg);
-        $('#js-modal-title').text(modalTitle); // テキストをセット
-
-        // モーダルを表示
-        $('#js-modal').addClass('is-open');
-        $('body').addClass('no-scroll');
-    });
-
-    // 閉じる処理（背景クリック時）
-    $('#js-modal-bg').on('click', function() {
-        $('#js-modal').removeClass('is-open');
-        $('body').removeClass('no-scroll');
-        // 次回のために中身を空にしておく（任意）
-        $('#js-modal-title').text('');
-    });
-});
-$(function() {
-    // モーダルを開く処理
-    $('.js-modal-target').on('click', function() {
-        const imgSrc = $(this).data('modal-img');
-        const title = $(this).data('modal-title');
-
-        $('#js-modal-img').attr('src', imgSrc);
-        $('#js-modal-title').text(title);
-        $('#js-modal').addClass('is-open');
-        $('body').addClass('no-scroll'); // 背景スクロールを止める
-    });
-
-    // モーダルを閉じる処理（×ボタン または 黒い背景 をクリック）
-    $('#js-modal-close, #js-modal-bg').on('click', function() {
-        $('#js-modal').removeClass('is-open');
-        $('body').removeClass('no-scroll'); // スクロールを再開
-    });
-});
-$(function() {
-    // --- 既存のモーダル処理の下に以下を追記 ---
-
-    $(window).on('scroll', function() {
-        // FV（メインビジュアル）の高さを取得
+        // 3. ヘッダーの背景色変更
         const fvHeight = $('.fv').innerHeight();
-        
-        // スクロール量がFVの高さを超えたらクラスを付け外しする
-        if ($(window).scrollTop() > fvHeight - 80) { // 80はヘッダーの高さ分
+        if (scroll > fvHeight - 80) {
             $('.header').addClass('is-scrolled');
         } else {
             $('.header').removeClass('is-scrolled');
