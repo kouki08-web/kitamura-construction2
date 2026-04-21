@@ -33,7 +33,7 @@ html {
     -webkit-text-size-adjust: 100%;
     word-break: break-all;
     scroll-behavior: smooth;
-    scroll-padding-top: 8.0rem;
+    scroll-padding-top: 8rem;
     font-size: 10px;
     color: rgba(0, 0, 0, 1);
 }
@@ -76,12 +76,13 @@ img {
         padding-inline: 3rem;
     }
 }
+
 /* --- フェードインアニメーション --- */
 .js-fade {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1.0s ease, transform 1.0s ease;
-    
+
     &.is-visible {
         opacity: 1;
         transform: translateY(0);
@@ -102,6 +103,11 @@ img {
 
     @include sp {
         height: 5rem;
+    }
+
+    // ✅ 追加: スクロール後のヘッダー背景（JSで .is-scrolled を付与）
+    &.is-scrolled {
+        background: $main-color;
     }
 
     .inner {
@@ -143,9 +149,9 @@ img {
             padding-bottom: 0.5rem;
             letter-spacing: 0.1em;
             @media (max-width:910px) {
-            font-size: 1.2rem;
-            letter-spacing: 0.05em;
-        }
+                font-size: 1.2rem;
+                letter-spacing: 0.05em;
+            }
 
             &::after {
                 content: '';
@@ -167,10 +173,10 @@ img {
 
 /* ハンバーガーメニュー全体 */
 .hamburger {
-    display: none; 
+    display: none;
 
     @include sp {
-        display: block; 
+        display: block;
         position: absolute;
         width: 77px;
         height: 50px;
@@ -251,6 +257,18 @@ img {
                 &:not(:last-of-type) {
                     margin-bottom: 25px;
                 }
+
+                // ✅ 追加: モバイルナビの <a> タグのスタイル
+                a {
+                    color: $color-white;
+                    text-decoration: none;
+                    display: block;
+                    transition: opacity 0.4s;
+
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
             }
         }
     }
@@ -258,7 +276,7 @@ img {
 
 /* 黒背景（オーバーレイ） */
 .overlay {
-    display: none; 
+    display: none;
 
     @include sp {
         display: block;
@@ -353,7 +371,7 @@ img {
     }
 
     &__catch {
-        position: absolute;      
+        position: absolute;
         top: 50.9%;
         left: 36.6%;
         transform: translate(-50%, -50%);
@@ -376,7 +394,7 @@ img {
             margin-left: calc(38 / 1080 * 100vw);
             font-weight: 500;
             letter-spacing: 0.18em;
-            
+
             @include sp {
                 font-size: calc(24 / 375 * 100vw);
                 letter-spacing: 0.25em;
@@ -473,7 +491,7 @@ img {
                 width: 100%;
                 aspect-ratio: 375 / 250;
             }
-            
+
             h3 {
                 font-size: 1.6rem;
                 margin-top: 2.1rem;
@@ -498,7 +516,7 @@ img {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start; 
+            align-items: flex-start;
 
             @include sp {
                 position: relative;
@@ -523,7 +541,7 @@ img {
                 @include sp {
                     font-size: 2rem;
                     margin-top: 0;
-                    padding-left: 0; 
+                    padding-left: 0;
                     margin-left: calc(20 / 315 * 100%);
                     padding-top: 2rem;
                 }
@@ -535,7 +553,7 @@ img {
                 font-weight: 600;
                 text-align: left;
                 margin-top: 1.5rem;
-                padding-right: calc(30 / 500 * 100%); 
+                padding-right: calc(30 / 500 * 100%);
                 margin-left: calc(248 / 500 * 100%);
 
                 @include sp {
@@ -618,6 +636,7 @@ img {
         }
     }
 }
+
 // works
 .works {
     padding: 4.9rem 0 8.1rem;
@@ -635,8 +654,7 @@ img {
     }
     &__items {
         display: flex;
-        justify-content: center; 
-        
+        justify-content: center;
         gap: calc(40 / 920 * 100%);
         @include sp {
             flex-wrap: wrap;
@@ -644,14 +662,13 @@ img {
         }
     }
     &__item {
-        width: calc(200 / 920 * 100%); 
-        
+        width: calc(200 / 920 * 100%);
         @include sp {
             width: 100%;
         }
-        
+
         .works__image {
-            width: 100%; 
+            width: 100%;
             aspect-ratio: 200 / 200;
             @include sp {
                 width: 100%;
@@ -673,6 +690,7 @@ img {
         }
     }
 }
+
 // news
 .news {
     padding: 4.9rem 0 8.1rem;
@@ -686,30 +704,48 @@ img {
     &__items {
         display: flex;
         column-gap: calc(60 / 920 * 100%);
-        margin-top: 7rem; 
+        margin-top: 7rem;
         @include sp {
             flex-direction: column;
             row-gap: 5rem;
             margin-top: 4.1rem;
-        }
-        & :first-child .news__article-link:nth-of-type(3) {
-            @include sp {
-                .news__text p {
-                    width: 85%;
-                }
-            }
         }
     }
     &__item {
         width: calc(430 / 920 * 100vw);
         background: $color-white;
         padding-bottom: 2.9rem;
+        
         @include sp {
             width: 100%;
             margin-top: 0;
             padding-bottom: 4.1rem;
         }
-        
+
+        // ✅ お知らせ（1つ目のitem）の3つ目を調整
+        &:nth-child(1) {
+            .news__article-link:nth-of-type(3) {
+                .news__text p {
+                    width: 80%; // お知らせ3つ目の幅
+                    @include sp {
+                        width: 85%;
+                    }
+                }
+            }
+        }
+
+        // ✅ ブログ（2つ目のitem）の3つ目を調整
+        &:nth-child(2) {
+            .news__article-link:nth-of-type(3) {
+                .news__text p {
+                    width: 80%; // ブログ3つ目の幅
+                    @include sp {
+                        width: 95%;
+                    }
+                }
+            }
+        }
+
         .news__catch {
             background: $main-color;
             width: 95.3%;
@@ -717,25 +753,23 @@ img {
             display: flex;
             align-items: center;
             gap: calc(60 / 1080 * 100vw);
-            padding-left: calc(45 / 960 * 100%); 
+            padding-left: calc(45 / 960 * 100%);
             @include sp {
                 width: 93.5%;
                 height: auto;
                 padding: 1rem 0 1rem 6.5%;
                 margin-bottom: 1rem;
             }
-            
+
             h3 {
                 font-size: 2rem;
                 font-weight: 600;
                 color: $color-white;
                 margin: 0;
-                @include sp {
-                }
             }
         }
     }
-    
+
     &__article-link {
         display: flex;
         border-bottom: 1px solid $main-color;
@@ -744,12 +778,13 @@ img {
         transition: opacity 0.4s;
         margin-left: calc(45 / 960 * 100%);
         margin-right: calc(45 / 960 * 100%);
-        padding-top: 2.7rem; 
+        padding-top: 2.7rem;
         padding-bottom: 1.2rem;
+
         @include sp {
             margin-left: 5%;
             margin-right: 5%;
-            padding-top: 1.9rem; 
+            padding-top: 1.9rem;
             padding-bottom: 1.3rem;
         }
         &:nth-of-type(2) {
@@ -772,13 +807,13 @@ img {
             opacity: 0.7;
         }
     }
-    
+
     &__date {
         font-size: 1.6rem;
         font-weight: 500;
         width: calc(53 / 1080 * 100vw);
         white-space: nowrap;
-        
+
         @include sp {
             width: auto;
             padding-top: 0;
@@ -786,14 +821,14 @@ img {
             white-space: nowrap;
         }
     }
-    
+
     &__text {
         flex: 1;
         p {
             margin: 0;
             font-size: 1.8rem;
             font-weight: 500;
-            margin-top: calc(8 / 960 * 100%); 
+            margin-top: calc(8 / 960 * 100%);
             margin-left: calc(195 / 960 * 100%);
             line-height: calc(25 / 18);
             display: -webkit-box;
@@ -844,18 +879,18 @@ img {
             position: relative;
             padding-right: calc(118 / 920 * 100%);
             cursor: pointer;
-            transition: opacity 0.4s, transform 0.3s; 
-            
+            transition: opacity 0.4s, transform 0.3s;
+
             @include sp {
                 font-size: 1.75rem;
                 top: calc(10 / 345 * 100vw);
                 left: calc(2 / 345 * 100vw);
             }
-            
+
             @media (hover: hover) {
                 &:hover {
                     opacity: 0.7;
-                    transform: translateX(10px); 
+                    transform: translateX(10px);
                 }
             }
             &::after {
@@ -891,15 +926,15 @@ img {
         @include title;
     }
     &-item {
-        position: relative; 
+        position: relative;
         @include sp {
             display: flex;
             flex-direction: column;
         }
-        
+
         &__map {
             position: relative;
-            aspect-ratio: 600 / 400; 
+            aspect-ratio: 600 / 400;
             width: calc(600 / 920 * 100%);
             z-index: 20;
             margin-top: 7rem;
@@ -909,8 +944,8 @@ img {
                 aspect-ratio: 315 / 300;
             }
             iframe {
-                width: 100%;  
-                height: 100%; 
+                width: 100%;
+                height: 100%;
                 border: 0;
             }
         }
@@ -919,7 +954,7 @@ img {
             width: calc(500 / 920 * 100%);
             aspect-ratio: 500 / 262;
             height: auto;
-            box-sizing: border-box; 
+            box-sizing: border-box;
             font-weight: 600;
             color: $color-white;
             position: absolute;
@@ -931,7 +966,7 @@ img {
             text-align: left;
             justify-content: flex-end;
             padding: 2rem 0.5rem 2.2rem calc(258 / 1080 * 100%);
-            font-style: normal; 
+            font-style: normal;
             @include sp {
                 position: relative;
                 width: 100%;
@@ -946,7 +981,7 @@ img {
             font-size: 2rem;
             margin: 0;
         }
-        &__address p{
+        &__address p {
             font-size: 1.6rem;
             line-height: calc(25 / 16);
             margin: 0;
@@ -982,8 +1017,8 @@ img {
             a {
                 transition: opacity 0.4s;
                 color: $color-white;
-                
-                &:hover { 
+
+                &:hover {
                     opacity: 0.7;
                 }
             }
@@ -1047,11 +1082,11 @@ img {
 
         &:nth-child(2) {
             @include sp {
-                flex-direction: row; 
+                flex-direction: row;
                 align-items: center;
                 gap: calc(22 / 345 * 100%);
             }
-        } 
+        }
 
         &:has(.contact__input--checkbox),
         &:has(.contact__policy),
@@ -1068,7 +1103,7 @@ img {
         font-size: 2rem;
         line-height: calc(27 / 20);
         font-weight: 500;
-        margin-top: 1.3rem; 
+        margin-top: 1.3rem;
         @include sp {
             margin: 0;
         }
@@ -1088,8 +1123,8 @@ img {
     }
     &__item:nth-child(1) {
         margin-top: 4.9rem;
-        @include sp { 
-            margin-top: 2.2rem; 
+        @include sp {
+            margin-top: 2.2rem;
         }
     }
     &__item:nth-child(2) {
@@ -1135,30 +1170,30 @@ img {
         }
         .contact__item:nth-child(1) & {
             margin-left: calc(110 / 920 * 100%);
-            @include sp { 
-                margin-left: 0; 
-                margin-top: 0.4rem; 
+            @include sp {
+                margin-left: 0;
+                margin-top: 0.4rem;
             }
         }
         .contact__item:nth-child(2) & {
             margin-left: calc(148 / 920 * 100%);
-            @include sp { 
-                margin-left: calc(30 / 345 * 100%); 
-                margin-top: 0.4rem; 
+            @include sp {
+                margin-left: calc(30 / 345 * 100%);
+                margin-top: 0.4rem;
             }
         }
         .contact__item:nth-child(3) & {
-            margin-left: calc(21 / 920 * 100%); 
-            @include sp { 
-                margin-left: 0; 
-                margin-top: 0.4rem; 
+            margin-left: calc(21 / 920 * 100%);
+            @include sp {
+                margin-left: 0;
+                margin-top: 0.4rem;
             }
         }
         .contact__item:nth-child(4) & {
-            margin-left: calc(33 / 920 * 100%); 
-            @include sp { 
-                margin-left: 0; 
-                margin-top: 0.2rem; 
+            margin-left: calc(33 / 920 * 100%);
+            @include sp {
+                margin-left: 0;
+                margin-top: 0.2rem;
             }
         }
         input[type="text"],
@@ -1172,10 +1207,11 @@ img {
             background: $color-white;
             box-sizing: border-box;
             font-family: inherit;
-            outline: none;   
-            border: none; 
+            outline: none;
+            border: none;
             &::placeholder {
-                color: #A0A0A0;}
+                color: #A0A0A0;
+            }
             @include sp {
                 font-size: 1.6rem;
                 line-height: 1.2;
@@ -1223,17 +1259,14 @@ img {
                 align-items: center;
                 font-size: 1.8rem;
                 cursor: pointer;
-                @include sp {
-                    font-size: 1.8rem;
-                }
 
                 input[type="radio"] {
                     margin-right: 1.8rem;
                     width: 2rem;
                     height: 2rem;
-                    appearance: none !important; 
+                    appearance: none !important;
                     background: #fff !important;
-                    border: none !important; 
+                    border: none !important;
                     border-radius: 50%;
                     cursor: pointer;
                     @include sp {
@@ -1267,7 +1300,7 @@ img {
                 box-sizing: border-box;
                 column-gap: calc(90 / 920 * 100%);
                 @include sp {
-                    width: 50%; 
+                    width: 50%;
                     font-size: 1.6rem;
                     column-gap: calc(22 / 345 * 100%);
                     margin-bottom: 0rem;
@@ -1275,10 +1308,10 @@ img {
                 input[type="checkbox"] {
                     width: 2rem;
                     height: 2rem;
-                    appearance: none !important; 
-                    -webkit-appearance: none !important; 
+                    appearance: none !important;
+                    -webkit-appearance: none !important;
                     background: #fff !important;
-                    border: none !important; 
+                    border: none !important;
                     cursor: pointer;
                     margin-left: 0;
                     margin-right: 0;
@@ -1291,14 +1324,14 @@ img {
             }
         }
     }
-    
+
     &__policy {
         width: 100%;
         @include sp {
             margin-top: 0rem;
         }
 
-        &-title { 
+        &-title {
             margin-bottom: 1rem;
             font-size: 2rem;
             font-weight: 500;
@@ -1309,19 +1342,19 @@ img {
         &-box {
             width: 100%;
             background: $color-white;
-            padding: 4rem 6rem 4rem 4rem; 
+            padding: 4rem 6rem 4rem 4rem;
             overflow-y: scroll;
             box-sizing: border-box;
             aspect-ratio: 800 / 300;
-            border: none; 
+            border: none;
             @include sp {
-                padding: 3.1rem 5rem 3.1rem 3rem; 
+                padding: 3.1rem 5rem 3.1rem 3rem;
                 aspect-ratio: auto;
                 aspect-ratio: 315 / 323;
             }
 
             p {
-                font-size: 1.8rem; 
+                font-size: 1.8rem;
                 line-height: calc(31 / 18);
                 font-weight: 500;
                 margin: 0;
@@ -1337,12 +1370,12 @@ img {
                 margin-bottom: 2.5rem;
                 padding-left: 1.5em;
                 list-style: disc;
-                
+
                 li {
                     font-size: 1.8rem;
                     line-height: 1.7;
                     margin-bottom: 0.5rem;
-                    
+
                     @include sp {
                         font-size: 1.6rem;
                     }
@@ -1375,9 +1408,9 @@ img {
             border: 2px solid $main-color;
             @media (hover: hover) {
                 &:hover {
-                    background-color: $color-white; 
-                    color: $main-color;            
-                    opacity: 1;                     
+                    background-color: $color-white;
+                    color: $main-color;
+                    opacity: 1;
                 }
             }
             @include sp {
@@ -1466,7 +1499,7 @@ img {
             list-style: none;
             margin-top: 1.7rem;
             padding: 0;
-            
+
             @include sp {
                 margin-top: 1.8rem;
                 gap: calc(32 / 345 * 100%);
@@ -1486,7 +1519,7 @@ img {
             width: 3rem;
             height: 3rem;
             transition: transform 0.4s, opacity 0.3s;
-            
+
             img {
                 width: 100%;
                 height: auto;
@@ -1507,14 +1540,14 @@ img {
         color: $color-white;
         font-weight: 500;
         display: flex;
-        justify-content: center; 
+        justify-content: center;
         align-items: center;
         width: 100%;
         margin-top: 6.9rem;
         aspect-ratio: calc(1080 / 92);
         @include sp {
             margin-top: 3.8rem;
-            padding: 2.2rem 0; 
+            padding: 2.2rem 0;
             text-align: center;
         }
         .copyright {
@@ -1538,7 +1571,9 @@ img {
     cursor: pointer;
 }
 
+// ✅ 修正: display:none で初期非表示（pagetop フラッシュ防止）
 .pagetop {
+    display: none;
     position: fixed;
     bottom: 60px;
     right: 20px;
@@ -1596,7 +1631,7 @@ img {
         z-index: 10;
         @include sp {
             top: calc(112 / 345 * 100%);
-            right: calc(10 / 345 * 100%)
+            right: calc(10 / 345 * 100%);
         }
 
         span {
@@ -1619,20 +1654,30 @@ img {
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
-        cursor: pointer; 
+        cursor: pointer;
     }
 
     /* 拡大画像の中身 */
     &__content {
         position: relative;
         z-index: 1;
-        width: 90%; 
+        width: 90%;
         max-width: 800px;
-        
+
         img {
             width: 100%;
             height: auto;
         }
+    }
+
+    // ✅ 追加: モーダルタイトルのスタイル（HTMLのインラインstyleから移動）
+    &__title {
+        color: #fff;
+        text-align: left;
+        font-size: 2rem;
+        margin-top: 15px;
+        font-weight: 600;
+        margin-bottom: 0;
     }
 }
 

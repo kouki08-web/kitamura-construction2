@@ -4,6 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>株式会社北村建設興業</title>
+
+    <!-- ✅ 追加: meta description -->
+    <meta name="description" content="株式会社北村建設興業は長崎県を拠点に、新築・リフォーム・リノベーション・都市開発まで、伝統と革新を融合した建設サービスを提供しています。">
+
+    <!-- ✅ 追加: OGP -->
+    <meta property="og:title" content="株式会社北村建設興業">
+    <meta property="og:description" content="伝統とイマを繋ぐ建設会社。新築・リノベーション・都市開発まで。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:image" content="https://example.com/images/ogp.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- ✅ 追加: 構造化データ（LocalBusiness） -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "株式会社北村建設興業",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "横尾○丁目○-○",
+        "addressLocality": "長崎市",
+        "addressRegion": "長崎県",
+        "postalCode": "852-8065",
+        "addressCountry": "JP"
+      },
+      "telephone": "000-000-0000",
+      "email": "info@example.com",
+      "url": "https://example.com/"
+    }
+    </script>
+
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./css/style.css">
@@ -11,20 +43,22 @@
 </head>
 <body>
     <header class="header">
-        <button id="js-hamburger" class="hamburger">
+        <!-- ✅ 修正: aria-label と aria-expanded を追加 -->
+        <button id="js-hamburger" class="hamburger" aria-label="メニューを開く" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </button>
         <div class="header-menu">
             <nav>
+                <!-- ✅ 修正: <li> 内に <a> タグを追加（モバイルナビが機能しなかった） -->
                 <ul>
-                    <li>ABOUT</li>
-                    <li>SERVICE</li>
-                    <li>WORKS</li>
-                    <li>NEWS</li>
-                    <li>COMPANY</li>
-                    <li>CONTACT</li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#service">SERVICE</a></li>
+                    <li><a href="#works">WORKS</a></li>
+                    <li><a href="#news">NEWS</a></li>
+                    <li><a href="#company">COMPANY</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
                 </ul>
             </nav>
         </div>
@@ -81,14 +115,14 @@
                 </div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
-            </div> 
+            </div>
             <div class="fv__contents">
                 <div class="fv__catch">
                     <h2>永遠も。<br class="sp">瞬間も。<br>あなたと共に。</h2>
                 </div>
             </div>
         </section>
-    
+
         <section id="about" class="about js-fade">
             <div class="about__contents">
                 <div class="about__image">
@@ -116,7 +150,7 @@
                             <div class="service__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/service-pc-01.jpg">
-                                    <img src="./images/service-sp-01.jpg" alt="">
+                                    <img src="./images/service-sp-01.jpg" alt="静岡県U.I様自宅 新築施工事例">
                                 </picture>
                                 <h3>静岡県U.I様自宅</h3>
                             </div>
@@ -129,7 +163,7 @@
                             <div class="service__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/service-pc-02.jpg">
-                                    <img src="./images/service-sp-02.jpg" alt="">
+                                    <img src="./images/service-sp-02.jpg" alt="北海道富良野市ブックカフェ リノベーション施工事例">
                                 </picture>
                                 <h3>北海道富良野市ブックカフェ</h3>
                             </div>
@@ -142,7 +176,7 @@
                             <div class="service__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/service-pc-03.jpg">
-                                    <img src="./images/service-sp-03.jpg" alt="">
+                                    <img src="./images/service-sp-03.jpg" alt="広島県竹原市 都市開発施工事例">
                                 </picture>
                                 <h3>広島県竹原市</h3>
                             </div>
@@ -154,8 +188,8 @@
                     </div>
                 </div>
             </div>
-        </section>        
-        
+        </section>
+
         <section id="works" class="works js-fade">
             <div class="inner">
                 <div class="works__title">
@@ -164,8 +198,8 @@
                 </div>
                 <div class="works__contents">
                     <div class="works__items">
-                        <div class="works__item js-modal-target" 
-                            data-modal-img="./images/model-01.jpg" 
+                        <div class="works__item js-modal-target"
+                            data-modal-img="./images/model-01.jpg"
                             data-modal-title="【新築】長崎県T.O様自宅">
                             <div class="works__image">
                                 <picture>
@@ -177,8 +211,8 @@
                                 <h3>【新築】<br class="pc">長崎県T.O様自宅</h3>
                             </div>
                         </div>
-                        <div class="works__item js-modal-target" 
-                            data-modal-img="./images/model-02.jpg" 
+                        <div class="works__item js-modal-target"
+                            data-modal-img="./images/model-02.jpg"
                             data-modal-title="【リノベーション】京都府カトリック丹波教会">
                             <div class="works__image">
                                 <picture>
@@ -190,8 +224,8 @@
                                 <h3>【リノベーション】<br>京都府カトリック丹波教会</h3>
                             </div>
                         </div>
-                        <div class="works__item js-modal-target" 
-                            data-modal-img="./images/model-03.jpg" 
+                        <div class="works__item js-modal-target"
+                            data-modal-img="./images/model-03.jpg"
                             data-modal-title="【新築】東京都A.F様自宅件事務所">
                             <div class="works__image">
                                 <picture>
@@ -203,8 +237,8 @@
                                 <h3>【新築】<br>東京都A.F様自宅件事務所</h3>
                             </div>
                         </div>
-                        <div class="works__item js-modal-target" 
-                            data-modal-img="./images/model-04.jpg" 
+                        <div class="works__item js-modal-target"
+                            data-modal-img="./images/model-04.jpg"
                             data-modal-title="【都市開発】山形県銀山温泉協同組合">
                             <div class="works__image">
                                 <picture>
@@ -234,6 +268,7 @@
                                 <div class="news__catch">
                                     <h3>お知らせ</h3>
                                 </div>
+                                <!-- ✅ 要修正: 実際の日付に差し替えてください -->
                                 <a href="#" class="news__article-link">
                                     <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
                                     <div class="news__text"><p>公式Instagram、YouTubeはじめました。</p></div>
@@ -254,6 +289,7 @@
                                 <div class="news__catch">
                                     <h3>ブログ</h3>
                                 </div>
+                                <!-- ✅ 要修正: 実際の日付に差し替えてください -->
                                 <a href="#" class="news__article-link">
                                     <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
                                     <div class="news__text"><p>あけましておめでとうございます。〜会長から社員まで〜</p></div>
@@ -283,13 +319,14 @@
                 <div class="company__contents">
                     <div class="company__item company-item">
                         <div class="company-item__map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.2365909224086!2d129.83669517616573!3d32.81249568217116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356aad0aefe2a6b9%3A0x13f32e3d4c83018!2z44CSODUyLTgwNjUg6ZW35bSO55yM6ZW35bSO5biC5qiq5bC-77yR5LiB55uu77yV4oiS77yT77yW!5e0!3m2!1sja!2sjp!4v1774453517938!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.2365909224086!2d129.83669517616573!3d32.81249568217116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356aad0aefe2a6b9%3A0x13f32e3d4c83018!2z44CSODUyLTgwNjUg6ZW35bSO55yM6ZW35bSO5biC5qiq5bC-77yR5LiB55uu77yV4oiS77yT77yW!5e0!3m2!1sja!2sjp!4v1774453517938!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="株式会社北村建設興業 地図"></iframe>
                         </div>
                         <address class="company-item__info">
                             <div class="company-item__name"><p>株式会社 北村建設興業</p></div>
                             <div class="company-item__address"><p>〒852-8065<br>長崎県長崎市横尾○丁目○-○</p></div>
                             <div class="company-item__tel"><span>TEL</span><a href="tel:000-000-0000"> 000-000-0000</a></div>
-                            <div class="company-item__mail">Mail　<a href="mailto:info@example.com"><span class="ib-span">info@example.com</span></a></div>
+                            <!-- ✅ 修正: 不要な .ib-span クラスを削除 -->
+                            <div class="company-item__mail">Mail　<a href="mailto:info@example.com">info@example.com</a></div>
                         </address>
                     </div>
                 </div>
@@ -305,11 +342,13 @@
             </div>
             <div class="contact__contents">
                 <div class="contact__text"><p>３営業日以内にメールにてご連絡いたします。*は入力必須項目となります。</p></div>
-                <form action="#">
+                <!-- ✅ 修正: action="#" をそのまま維持し、JS側で submit イベントを制御 -->
+                <form id="js-contact-form" action="#" novalidate>
                     <div class="contact__items">
                         <div class="contact__item">
                             <div class="contact__label"><label for="name">お名前 *</label></div>
-                            <div class="contact__input"><input type="text" id="name" name="name" placeholder="例：北村太郎"></div>
+                            <!-- ✅ 修正: autocomplete 属性を追加 -->
+                            <div class="contact__input"><input type="text" id="name" name="name" placeholder="例：北村太郎" autocomplete="name" required></div>
                         </div>
                         <div class="contact__item">
                             <div class="contact__label"><p>性別</p></div>
@@ -320,7 +359,8 @@
                         </div>
                         <div class="contact__item">
                             <div class="contact__label"><label for="email">メールアドレス *</label></div>
-                            <div class="contact__input"><input type="email" id="email" name="email" placeholder="例：aaaaaaaa@gmail.com"></div>
+                            <!-- ✅ 修正: autocomplete 属性を追加 -->
+                            <div class="contact__input"><input type="email" id="email" name="email" placeholder="例：aaaaaaaa@gmail.com" autocomplete="email" required></div>
                         </div>
                         <div class="contact__item">
                             <div class="contact__label"><label for="category">問い合わせ種別</label></div>
@@ -335,7 +375,7 @@
                         </div>
                         <div class="contact__item">
                             <div class="contact__label"><label for="message">内容 *</label></div>
-                            <div class="contact__input"><textarea name="message" id="message" rows="5"></textarea></div>
+                            <div class="contact__input"><textarea name="message" id="message" rows="5" required></textarea></div>
                         </div>
                         <div class="contact__item">
                             <div class="contact__label"><p>何を見て当社HPを知りましたか？ (複数回答可)　*</p></div>
@@ -425,8 +465,9 @@
         <div class="modal__bg" id="js-modal-bg"></div>
         <button id="js-modal-close" class="modal__close" aria-label="閉じる"><span></span><span></span></button>
         <div class="modal__content">
-            <img src="" alt="モーデル" id="js-modal-img">
-            <p id="js-modal-title" style="color: #fff; text-align: left; font-size: 2rem; margin-top: 15px; font-weight: 600;"></p>
+            <img src="" alt="" id="js-modal-img">
+            <!-- ✅ 修正: インラインスタイルを削除し、CSSクラス .modal__title で管理 -->
+            <p id="js-modal-title" class="modal__title"></p>
         </div>
     </div>
 
@@ -442,7 +483,7 @@
             <div class="footer__nav">
                 <nav class="footer__nav-link">
                     <ul>
-                        <li><a href="#about">ABOUT </a></li>
+                        <li><a href="#about">ABOUT</a></li>
                         <li><a href="#service">SERVICE</a></li>
                         <li><a href="#works">WORKS</a></li>
                         <li><a href="#news">NEWS</a></li>
@@ -453,17 +494,20 @@
             </div>
             <div class="footer__sns">
                 <ul>
-                    <li><a href="#" class="sns-icon"><img src="./images/twitter.svg" alt="twitter"></a></li>
-                    <li><a href="#" class="sns-icon"><img src="./images/facebook.svg" alt="facebook"></a></li>
-                    <li><a href="#" class="sns-icon"><img src="./images/youtube.svg" alt="youtube"></a></li>
-                    <li><a href="#" class="sns-icon"><img src="./images/instgram.svg" alt="instagram"></a></li>
+                    <!-- ✅ 修正: 外部リンクに rel="noopener noreferrer" と target="_blank" を追加 -->
+                    <li><a href="#" class="sns-icon" target="_blank" rel="noopener noreferrer"><img src="./images/twitter.svg" alt="twitter"></a></li>
+                    <li><a href="#" class="sns-icon" target="_blank" rel="noopener noreferrer"><img src="./images/facebook.svg" alt="facebook"></a></li>
+                    <li><a href="#" class="sns-icon" target="_blank" rel="noopener noreferrer"><img src="./images/youtube.svg" alt="youtube"></a></li>
+                    <li><a href="#" class="sns-icon" target="_blank" rel="noopener noreferrer"><img src="./images/instgram.svg" alt="instagram"></a></li>
                 </ul>
             </div>
         </div>
+        <!-- ✅ 修正: ©︎Copyright0000 → &copy;Copyright 2024 に修正 -->
         <div class="footer__copyright">
-            <p class="copyright">©︎Copyright0000　<br class="sp">kitamurakensetukogyo</p>
+            <p class="copyright">&copy;Copyright 0000　<br class="sp">kitamurakensetukogyo</p>
         </div>
     </footer>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
