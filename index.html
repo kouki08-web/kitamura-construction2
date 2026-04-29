@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="./images/favicon.png">
+
     <title>株式会社北村建設興業</title>
 
-    <!-- ✅ 追加: meta description -->
     <meta name="description" content="株式会社北村建設興業は長崎県を拠点に、新築・リフォーム・リノベーション・都市開発まで、伝統と革新を融合した建設サービスを提供しています。">
 
-    <!-- ✅ 追加: OGP -->
     <meta property="og:title" content="株式会社北村建設興業">
     <meta property="og:description" content="伝統とイマを繋ぐ建設会社。新築・リノベーション・都市開発まで。">
     <meta property="og:type" content="website">
@@ -16,34 +17,35 @@
     <meta property="og:image" content="https://example.com/images/ogp.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- ✅ 追加: 構造化データ（LocalBusiness） -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "株式会社北村建設興業",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "横尾○丁目○-○",
-        "addressLocality": "長崎市",
-        "addressRegion": "長崎県",
-        "postalCode": "852-8065",
-        "addressCountry": "JP"
-      },
-      "telephone": "000-000-0000",
-      "email": "info@example.com",
-      "url": "https://example.com/"
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "株式会社北村建設興業",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "横尾○丁目○-○",
+            "addressLocality": "長崎市",
+            "addressRegion": "長崎県",
+            "postalCode": "852-8065",
+            "addressCountry": "JP"
+        },
+        "telephone": "000-000-0000",
+        "email": "info@example.com",
+        "url": "https://example.com/"
     }
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./images/favicon.png">
 </head>
 <body>
     <header class="header">
-        <!-- ✅ 修正: aria-label と aria-expanded を追加 -->
         <button id="js-hamburger" class="hamburger" aria-label="メニューを開く" aria-expanded="false">
             <span></span>
             <span></span>
@@ -51,7 +53,6 @@
         </button>
         <div class="header-menu">
             <nav>
-                <!-- ✅ 修正: <li> 内に <a> タグを追加（モバイルナビが機能しなかった） -->
                 <ul>
                     <li><a href="#about">ABOUT</a></li>
                     <li><a href="#service">SERVICE</a></li>
@@ -80,6 +81,7 @@
 
     <main>
         <section class="fv">
+            <div class="fv__overlay"></div>
             <div class="swiper">
                 <div class="fv__slides swiper-wrapper">
                     <div class="fv__slide fv-slide swiper-slide">
@@ -87,7 +89,7 @@
                             <div class="fv-slide__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/fv-pc-01.jpg">
-                                    <img src="./images/fv-sp-01.jpg" alt="永遠も。瞬間も。あなたと共に。">
+                                    <img src="./images/fv-sp-01.jpg" alt="家の風景">
                                 </picture>
                             </div>
                         </div>
@@ -97,7 +99,7 @@
                             <div class="fv-slide__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/fv-pc-02.jpg">
-                                    <img src="./images/fv-sp-02.jpg" alt="永遠も。瞬間も。あなたと共に。">
+                                    <img src="./images/fv-sp-02.jpg" alt="家の風景">
                                 </picture>
                             </div>
                         </div>
@@ -107,14 +109,12 @@
                             <div class="fv-slide__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/fv-pc-03.jpg">
-                                    <img src="./images/fv-sp-03.jpg" alt="永遠も。瞬間も。あなたと共に。">
+                                    <img src="./images/fv-sp-03.jpg" alt="家の風景">
                                 </picture>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
             </div>
             <div class="fv__contents">
                 <div class="fv__catch">
@@ -123,8 +123,8 @@
             </div>
         </section>
 
-        <section id="about" class="about js-fade">
-            <div class="about__contents">
+        <section id="about" class="about">
+            <div class="about__contents js-fade">
                 <div class="about__image">
                     <picture>
                         <source media="(min-width: 768px)" srcset="./images/about-pc.jpg">
@@ -138,8 +138,8 @@
             </div>
         </section>
 
-        <section id="service" class="service js-fade">
-            <div class="inner">
+        <section id="service" class="service">
+            <div class="inner js-fade">
                 <div class="service__title">
                     <h2>SERVICE</h2>
                     <p>サービス</p>
@@ -156,7 +156,7 @@
                             </div>
                             <div class="service__textarea">
                                 <h4>新築<br class="pc">（土地探し〜建築）</h4>
-                                <p>土地探しから建築、施工まで<br>サポートいたします。<br>風水的観点からもご提案。</p>
+                                <p>土地探しから建築、施工までサポートいたします。<br>風水的観点からもご提案。</p>
                             </div>
                         </div>
                         <div class="service__item service__item--reverse">
@@ -190,8 +190,8 @@
             </div>
         </section>
 
-        <section id="works" class="works js-fade">
-            <div class="inner">
+        <section id="works" class="works">
+            <div class="inner js-fade">
                 <div class="works__title">
                     <h2>WORKS</h2>
                     <p>施工事例</p>
@@ -226,15 +226,15 @@
                         </div>
                         <div class="works__item js-modal-target"
                             data-modal-img="./images/model-03.jpg"
-                            data-modal-title="【新築】東京都A.F様自宅件事務所">
+                            data-modal-title="【新築】東京都A.F様自宅兼事務所">
                             <div class="works__image">
                                 <picture>
                                     <source media="(min-width: 768px)" srcset="./images/works-pc-03.jpg">
-                                    <img src="./images/works-sp-03.jpg" alt="【新築】東京都A.F様自宅件事務所">
+                                    <img src="./images/works-sp-03.jpg" alt="【新築】東京都A.F様自宅兼事務所">
                                 </picture>
                             </div>
                             <div class="works__textarea">
-                                <h3>【新築】<br>東京都A.F様自宅件事務所</h3>
+                                <h3>【新築】<br>東京都A.F様自宅兼事務所</h3>
                             </div>
                         </div>
                         <div class="works__item js-modal-target"
@@ -255,8 +255,8 @@
             </div>
         </section>
 
-        <section id="news" class="news js-fade">
-            <div class="inner">
+        <section id="news" class="news">
+            <div class="inner js-fade">
                 <div class="news__title">
                     <h2>NEWS</h2>
                     <p>お知らせ</p>
@@ -268,19 +268,24 @@
                                 <div class="news__catch">
                                     <h3>お知らせ</h3>
                                 </div>
-                                <!-- ✅ 要修正: 実際の日付に差し替えてください -->
-                                <a href="#" class="news__article-link">
-                                    <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
-                                    <div class="news__text"><p>公式Instagram、YouTubeはじめました。</p></div>
-                                </a>
-                                <a href="#" class="news__article-link">
-                                    <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
-                                    <div class="news__text"><p>非住宅 木造建築フェアに出展します。</p></div>
-                                </a>
-                                <a href="#" class="news__article-link">
-                                    <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
-                                    <div class="news__text"><p>公式ホームページがリニューアルしました。</p></div>
-                                </a>
+                                <div class="news__article-wrapper">
+                                    <a href="#" class="news__article-link">
+                                        <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
+                                        <div class="news__text"><p>公式Instagram、YouTubeはじめました。</p></div>
+                                    </a>
+                                </div>
+                                <div class="news__article-wrapper">
+                                    <a href="#" class="news__article-link">
+                                        <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
+                                        <div class="news__text"><p>非住宅 木造建築フェアに出展します。</p></div>
+                                    </a>
+                                </div>
+                                <div class="news__article-wrapper">
+                                    <a href="#" class="news__article-link">
+                                        <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
+                                        <div class="news__text"><p>公式ホームページがリニューアルしました。</p></div>
+                                    </a>
+                                </div>
                                 <div class="news__more"><a href="#">more</a></div>
                             </article>
                         </div>
@@ -289,19 +294,24 @@
                                 <div class="news__catch">
                                     <h3>ブログ</h3>
                                 </div>
-                                <!-- ✅ 要修正: 実際の日付に差し替えてください -->
-                                <a href="#" class="news__article-link">
-                                    <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
-                                    <div class="news__text"><p>あけましておめでとうございます。〜会長から社員まで〜</p></div>
-                                </a>
-                                <a href="#" class="news__article-link">
-                                    <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
-                                    <div class="news__text"><p>【検証】土地と人に相性はあるのか？</p></div>
-                                </a>
-                                <a href="#" class="news__article-link">
-                                    <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
-                                    <div class="news__text"><p>弊社創業初の入社式が行われました。</p></div>
-                                </a>
+                                <div class="news__article-wrapper">
+                                    <a href="#" class="news__article-link">
+                                        <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
+                                        <div class="news__text"><p>あけましておめでとうございます。〜会長から社員まで〜</p></div>
+                                    </a>
+                                </div>
+                                <div class="news__article-wrapper">
+                                    <a href="#" class="news__article-link">
+                                        <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
+                                        <div class="news__text"><p>【検証】土地と人に相性はあるのか？</p></div>
+                                    </a>
+                                </div>
+                                <div class="news__article-wrapper">
+                                    <a href="#" class="news__article-link">
+                                        <div class="news__date"><time datetime="2026-01-01">0000.00</time></div>
+                                        <div class="news__text"><p>弊社創業初の入社式が行われました。</p></div>
+                                    </a>
+                                </div>
                                 <div class="news__more"><a href="#">more</a></div>
                             </article>
                         </div>
@@ -310,8 +320,8 @@
             </div>
         </section>
 
-        <section id="company" class="company js-fade">
-            <div class="inner">
+        <section id="company" class="company">
+            <div class="inner js-fade">
                 <div class="company__title">
                     <h2>COMPANY</h2>
                     <p>会社概要</p>
@@ -325,7 +335,6 @@
                             <div class="company-item__name"><p>株式会社 北村建設興業</p></div>
                             <div class="company-item__address"><p>〒852-8065<br>長崎県長崎市横尾○丁目○-○</p></div>
                             <div class="company-item__tel"><span>TEL</span><a href="tel:000-000-0000"> 000-000-0000</a></div>
-                            <!-- ✅ 修正: 不要な .ib-span クラスを削除 -->
                             <div class="company-item__mail">Mail　<a href="mailto:info@example.com">info@example.com</a></div>
                         </address>
                     </div>
@@ -333,21 +342,18 @@
             </div>
         </section>
 
-        <section id="contact" class="contact js-fade">
-            <div class="inner">
+        <section id="contact" class="contact">
+            <div class="inner js-fade">
                 <div class="contact__title">
                     <h2>CONTACT</h2>
                     <p>お問い合わせ</p>
                 </div>
-            </div>
             <div class="contact__contents">
                 <div class="contact__text"><p>３営業日以内にメールにてご連絡いたします。*は入力必須項目となります。</p></div>
-                <!-- ✅ 修正: action="#" をそのまま維持し、JS側で submit イベントを制御 -->
                 <form id="js-contact-form" action="#" novalidate>
                     <div class="contact__items">
                         <div class="contact__item">
                             <div class="contact__label"><label for="name">お名前 *</label></div>
-                            <!-- ✅ 修正: autocomplete 属性を追加 -->
                             <div class="contact__input"><input type="text" id="name" name="name" placeholder="例：北村太郎" autocomplete="name" required></div>
                         </div>
                         <div class="contact__item">
@@ -359,7 +365,6 @@
                         </div>
                         <div class="contact__item">
                             <div class="contact__label"><label for="email">メールアドレス *</label></div>
-                            <!-- ✅ 修正: autocomplete 属性を追加 -->
                             <div class="contact__input"><input type="email" id="email" name="email" placeholder="例：aaaaaaaa@gmail.com" autocomplete="email" required></div>
                         </div>
                         <div class="contact__item">
@@ -443,8 +448,8 @@
                                     前項の開示手続きにより、弊社が保有する保有個人データ内容に事実と異なる記載がある場合には、訂正、変更又は削除の手続きを取らせて頂きます。</p>
 
                                     <p>プライバシーポリシーに関するお問合せ先<br>
-                                    弊社の個人情報の取扱いに関するお問合せは、下記までお問い合せください。<br><br>
-                                    社名：株式会社北村建設興業<br>
+                                    弊社の個人情報の取扱いに関するお問合せは、下記までお問い合せください。</p>
+                                    <p>社名：株式会社北村建設興業<br>
                                     住所：長崎県長崎市横尾○丁目○-○<br>
                                     電話：000-000-0000<br>
                                     FAX：000-000-0000<br>
@@ -458,15 +463,15 @@
                     </div>
                 </form>
             </div>
+            </div>
         </section>
     </main>
 
     <div id="js-modal" class="modal">
         <div class="modal__bg" id="js-modal-bg"></div>
-        <button id="js-modal-close" class="modal__close" aria-label="閉じる"><span></span><span></span></button>
         <div class="modal__content">
-            <img src="" alt="" id="js-modal-img">
-            <!-- ✅ 修正: インラインスタイルを削除し、CSSクラス .modal__title で管理 -->
+            <button id="js-modal-close" class="modal__close" aria-label="閉じる"><span></span><span></span></button>
+            <img id="js-modal-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="">
             <p id="js-modal-title" class="modal__title"></p>
         </div>
     </div>
@@ -478,7 +483,7 @@
     <footer class="footer">
         <div class="inner">
             <div class="footer__title">
-                <h2><a href="#">株式会社 北村建設興業</a></h2>
+                <p><a href="#">株式会社 北村建設興業</a></p>
             </div>
             <div class="footer__nav">
                 <nav class="footer__nav-link">
@@ -494,7 +499,6 @@
             </div>
             <div class="footer__sns">
                 <ul>
-                    <!-- ✅ 修正: 外部リンクに rel="noopener noreferrer" と target="_blank" を追加 -->
                     <li><a href="#" class="sns-icon" target="_blank" rel="noopener noreferrer"><img src="./images/twitter.svg" alt="twitter"></a></li>
                     <li><a href="#" class="sns-icon" target="_blank" rel="noopener noreferrer"><img src="./images/facebook.svg" alt="facebook"></a></li>
                     <li><a href="#" class="sns-icon" target="_blank" rel="noopener noreferrer"><img src="./images/youtube.svg" alt="youtube"></a></li>
@@ -502,9 +506,8 @@
                 </ul>
             </div>
         </div>
-        <!-- ✅ 修正: ©︎Copyright0000 → &copy;Copyright 2024 に修正 -->
         <div class="footer__copyright">
-            <p class="copyright">&copy;Copyright 0000　<br class="sp">kitamurakensetukogyo</p>
+            <p class="copyright">&copy;Copyright0000　<br class="sp">kitamurakensetukogyo</p>
         </div>
     </footer>
 
