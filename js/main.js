@@ -15,9 +15,9 @@ $(function () {
         $("#js-overlay").toggleClass("is-open");
 
         if (isActive) {
-            $("body").addClass("no-scroll");
+            $("html, body").addClass("no-scroll");
         } else {
-            $("body").removeClass("no-scroll");
+            $("html, body").removeClass("no-scroll");
         }
     });
 
@@ -26,7 +26,7 @@ $(function () {
         $("#js-hamburger").attr("aria-expanded", false);
         $(".header-menu").removeClass("is-open");
         $("#js-overlay").removeClass("is-open");
-        $("body").removeClass("no-scroll");
+        $("html, body").removeClass("no-scroll");
     }
 
     $("#js-overlay, .header-menu a").on("click", function () {
@@ -69,9 +69,9 @@ $(function () {
         // TOPに戻るボタンの表示制御
         if (!$("body").hasClass("no-scroll")) {
             if (scroll > 700) {
-                pagetop.stop().fadeIn(600);
+                pagetop.addClass("is-visible");
             } else {
-                pagetop.stop().fadeOut(600);
+                pagetop.removeClass("is-visible");
             }
         }
     });
@@ -93,13 +93,13 @@ $(function () {
         $("#js-modal-title").text(title);
 
         $("#js-modal").addClass("is-open");
-        $("body").addClass("no-scroll");
-        pagetop.stop().fadeOut(300);
+        $("html, body").addClass("no-scroll");
+        pagetop.removeClass("is-visible");
     });
 
     function closeModal() {
         $("#js-modal").removeClass("is-open");
-        $("body").removeClass("no-scroll");
+        $("html, body").removeClass("no-scroll");
 
         // CSSトランジション（0.4s）完了後にコンテンツをリセット
         setTimeout(function () {
@@ -108,7 +108,7 @@ $(function () {
         }, TRANSITION_MS);
 
         if ($(window).scrollTop() > 700) {
-            pagetop.stop().fadeIn(400);
+            pagetop.addClass("is-visible");
         }
     }
 
