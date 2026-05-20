@@ -98,7 +98,8 @@ img {
     display: block;
 }
 .inner {
-    max-width: 92rem;
+    max-width: 98rem;
+    padding-inline: 3rem;
     margin-inline: auto;
 }
 @media (max-width: 767px) {
@@ -172,7 +173,7 @@ img {
                 opacity: 0.6;
             }
         }
-        @media (max-width:940px) {
+        @media (max-width:1020px) {
             font-size: 1.8rem;
         }
         @include sp {
@@ -199,6 +200,11 @@ img {
             align-items: center;
             height: 8rem;
             
+            @media (max-width:1020px) {
+                font-size: 1.6rem;
+                letter-spacing: 0.05em;
+            }
+
             @media (max-width:940px) {
                 font-size: 1.2rem;
                 letter-spacing: 0.05em;
@@ -304,7 +310,7 @@ img {
 
         ul {
             margin: 0;
-            padding: 1.2rem 0 1.3rem 0;
+            padding: 0;
             list-style: none;
 
             li {
@@ -316,7 +322,7 @@ img {
                 color: $color-white;
                 text-decoration: none;
                 display: block;
-                padding: 1rem 1rem 1rem 2rem;
+                padding: 1.2rem 0 1.3rem 2rem;
                 transition: opacity 0.4s ease;
             }
         }
@@ -498,10 +504,10 @@ img {
 // service
 .service {
     position: relative;
-    padding: 7.4rem 3rem 4rem;
+    padding: 7.4rem 0 8rem;
     background: $background;
     @include sp {
-        padding: 4.4rem 3rem 5rem;
+        padding: 4.4rem 0 5rem;
     }
 
     &__title {
@@ -511,7 +517,7 @@ img {
     &__items {
         display: flex;
         flex-direction: column;
-        row-gap: 4rem;
+        row-gap: 8rem;
         margin-top: 6.9rem;
         @include sp {
             display: flex;
@@ -525,16 +531,15 @@ img {
     display: flex;
     align-items: flex-start;
     position: relative;
-    padding-bottom: 9rem;
 
     @include sp {
         flex-direction: column;
-        padding-bottom: 0;
     }
 }
 
         .service__image {
             width: calc(626 / 960 * 100%);
+            flex-shrink: 0;
             position: relative;
             z-index: 20;
             height: auto;
@@ -563,8 +568,8 @@ img {
             color: $color-white;
             aspect-ratio: 500 / 250;
             width: calc(500 / 920 * 100%);
-            position: absolute;
-            right: 0;
+            flex-shrink: 0;
+            margin-left: calc(100% - 626 / 960 * 100% - 500 / 920 * 100%);
             margin-top: calc(145 / 920 * 100%);
             z-index: 10;
             display: flex;
@@ -592,7 +597,7 @@ img {
                 margin-left: calc(248 / 500 * 100%);
                 margin-top: 1rem;
                 margin-bottom: 0;
-                @media (max-width: 940px) {
+                @media (max-width: 960px) {
                     font-size: 2.2rem;
                 }
                 @media (max-width: 872px) {
@@ -635,10 +640,15 @@ img {
         }
 
         .service__item--reverse {
-            justify-content: flex-end;
             @include sp {
                 flex-direction: column;
-                justify-content: flex-start;
+            }
+
+            .service__image {
+                order: 2;
+                @include sp {
+                    order: 0;
+                }
             }
 
             .service__image h3 {
@@ -649,11 +659,11 @@ img {
             }
 
             .service__textarea {
-                right: auto;
-                left: 0;
+                margin-left: 0;
+                margin-right: calc(100% - 626 / 960 * 100% - 500 / 920 * 100%);
                 align-items: flex-start;
                 @include sp {
-                    left: auto;
+                    margin-right: 0;
                 }
                 h4 {
                     padding-left: calc(40 / 500 * 100%);
@@ -709,9 +719,9 @@ img {
 
 // works
 .works {
-    padding: 7.4rem 3rem 9.5rem;
+    padding: 7.4rem 0 9.5rem;
     @include sp {
-        padding: 4.3rem 3rem 4.1rem;
+        padding: 4.3rem 0 4.1rem;
     }
 
     &__title {
@@ -776,10 +786,10 @@ img {
 
 // news
 .news {
-    padding: 7.4rem 3rem 8.1rem;
+    padding: 7.4rem 0 8.1rem;
     background: $background;
     @include sp {
-        padding: 4.4rem 3rem 5rem;
+        padding: 4.4rem 0 5rem;
     }
 
     &__title {
@@ -805,6 +815,7 @@ img {
         &:nth-of-type(1) {
             .news__article-wrapper:nth-of-type(4) {
                 .news__text p {
+                    width: 81%;
                     @include sp {
                         width: 80%;
                     }
@@ -854,7 +865,7 @@ img {
 
     &__article-link {
         display: flex;
-        width: 100%;
+        padding-top: 0.9rem;
         text-decoration: none;
         color: inherit;
         padding-bottom: 1.2rem;
@@ -874,32 +885,33 @@ img {
         }
 
         @include sp {
-            padding-top: 0.9rem;
+            padding-top: 0.8rem;
             padding-bottom: 1.3rem;
         }
     }
 
     &__date {
         font-size: 1.6rem;
-        margin-top: calc(68 / 960 * 100%);
+        margin-top: calc(51 / 960 * 100%);
         font-weight: 500;
         flex-shrink: 0;
         white-space: nowrap;
 
         @include sp {
             width: auto;
-            margin-top: calc(10 / 345 * 100%);
-            padding-left: calc(5 / 345 * 100%);
+            margin-top: 1rem;
+            padding-left: 0.3125rem;
             white-space: nowrap;
         }
     }
 
     &__text {
         flex: 1;
+        min-width: 0;
         p {
             font-size: 1.8rem;
             font-weight: 500;
-            margin-top: calc(84 / 960 * 100%);
+            margin-top: calc(57 / 960 * 100%);
             margin-left: calc(200 / 960 * 100%);
             line-height: 1.39;
             display: -webkit-box;
@@ -911,16 +923,16 @@ img {
 
         @include sp {
             p {
-                margin-top: calc(16 / 345 * 100%);
-                margin-right: calc(9 / 345 * 100%);
-                margin-left: calc(30 / 345 * 100%);
+                margin-top: 1.15rem;
+                margin-right: 0.5625rem;
+                margin-left: 2rem;
             }
         }
     }
 
     &__more {
         text-align: right;
-        margin-top: 3.1rem;
+        margin-top: 3.2rem;
         @include sp {
             margin-top: 2.4rem;
             margin-right: 5.4rem;
@@ -975,9 +987,9 @@ img {
 
 // company
 .company {
-    padding: 7.3rem 3rem 13.5rem;
+    padding: 7.3rem 0 13.5rem;
     @include sp {
-        padding: 4.5rem 3rem 5rem;
+        padding: 4.5rem 0 5rem;
     }
 
     &__title {
@@ -986,9 +998,11 @@ img {
 
     &-item {
         position: relative;
+        margin-top: 7rem;
         @include sp {
             display: flex;
             flex-direction: column;
+            margin-top: 4rem;
         }
 
         &__map {
@@ -996,10 +1010,8 @@ img {
             aspect-ratio: 600 / 400;
             width: calc(600 / 920 * 100%);
             z-index: 100;
-            margin-top: 7rem;
             @include sp {
                 width: 100%;
-                margin-top: 4rem;
                 aspect-ratio: 315 / 300;
             }
 
@@ -1106,10 +1118,10 @@ img {
 
 // contact
 .contact {
-    padding: 7.4rem 3rem 8rem;
+    padding: 7.4rem 0 8rem;
     background: $background;
     @include sp {
-        padding: 4.3rem 3rem 5rem;
+        padding: 4.3rem 0 5rem;
     }
 
     &__title {
@@ -1217,7 +1229,10 @@ img {
     }
 
     &__item:nth-child(2) {
-        margin-top: 1.2rem;
+        margin-top: 1rem;
+        @include sp {
+            margin-top: 1.2rem;
+        }
     }
     &__item:nth-child(3) {
         margin-top: 2.2rem;
@@ -1295,6 +1310,7 @@ img {
             font-size: 1.8rem;
             line-height: 1.5;
             background: $color-white;
+            letter-spacing: 0.01em;
             box-sizing: border-box;
             font-family: inherit;
             outline: none;
@@ -1467,8 +1483,8 @@ img {
         &-box {
             width: 100%;
             background: $color-white;
-            padding: 4rem 5rem 4rem 4rem;
-            margin-top: 1.5rem;
+            padding: 4rem 4rem 4rem 4rem;
+            margin-top: 1.3rem;
             overflow-y: scroll;
             box-sizing: border-box;
             height: 30rem;
@@ -1485,14 +1501,23 @@ img {
             }
             &::-webkit-scrollbar-track {
                 background: #E3E3E3;
+                border-radius: 0;
+                border-right: 1rem solid #FFFFFF;
+                background-clip: padding-box;
                 margin-top: 1rem;
-                margin-bottom: 2.3rem;
-                border-right: 1rem solid $color-white;
+                margin-bottom: 1rem;
+                @include sp {
+                    margin-bottom: 2.3rem;
+                }
             }
             &::-webkit-scrollbar-thumb {
                 background: #9B9B9B;
-                border-right: 1rem solid $color-white;
-                min-height: 3rem;
+                border-radius: 0;
+                border-right: 1rem solid #FFFFFF;
+                background-clip: padding-box;
+                @include sp {
+                    min-height: 3rem;
+                }
             }
 
             p {
@@ -1500,10 +1525,6 @@ img {
                 line-height: 1.72;
                 font-weight: 500;
                 margin-bottom: 3rem;
-
-                &:has(+ .policy-list) {
-                    margin-bottom: 0;
-                }
 
                 @include sp {
                     font-size: 1.6rem;
@@ -1550,7 +1571,7 @@ img {
             font-family: "Yu Mincho", "YuMincho", "MS PMincho", "Noto Serif JP", serif;
             width: 30rem;
             height: 5rem;
-            margin-top: -0.4rem;
+            margin-top: -0.2rem;
             border: 2px solid $main-color;
             cursor: pointer;
             transition: background-color 0.4s ease, color 0.4s ease, opacity 0.4s ease;
@@ -1565,6 +1586,7 @@ img {
 
             @include sp {
                 width: 100%;
+                margin-top: -0.4rem;
             }
         }
     }
@@ -1572,7 +1594,7 @@ img {
 
 // footer
 .footer {
-    padding: 8rem 0 0;
+    padding: 8.2rem 0 0;
     background: #fff;
     @include sp {
         padding: 5.2rem 0 0;
@@ -1606,9 +1628,9 @@ img {
 
     &__nav {
         width: 100%;
-        padding-top: 3rem;
+        margin-top: 2.9rem;
         @include sp {
-            padding-top: 2rem;
+            margin-top: 2rem;
         }
 
         ul {
@@ -1625,7 +1647,7 @@ img {
             width: calc(722 / 920 * 100%);
 
             @include sp {
-                width: calc(291 / 345 * 100%);
+                width: 100%;
                 flex-wrap: wrap;
                 gap: 0.5rem 2rem;
                 column-gap: calc(34 / 345 * 100%);
@@ -1642,6 +1664,9 @@ img {
 
                 @media (max-width: 960px) {
                     font-size: 1.4rem;
+                }
+                @media (max-width: 860px) {
+                    font-size: 1.2rem;
                 }
                 @include sp {
                     font-size: 1.8rem;
@@ -1746,6 +1771,7 @@ img {
     color: $color-white;
     text-align: center;
     border-radius: 50%;
+    clip-path: circle(50%);
     text-decoration: none;
     z-index: 100;
     transition: opacity 0.6s ease, visibility 0.6s ease;
@@ -1827,7 +1853,7 @@ img {
         width: calc(1080 / 450 * 100%);
         max-width: 45rem;
         background: #fff;
-        padding: 1.5rem;
+        padding: 2rem 2.1rem 1.4rem 2rem;
         box-sizing: border-box;
     }
 
