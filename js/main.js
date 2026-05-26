@@ -127,7 +127,33 @@ $(function () {
     $(window).trigger("scroll");
 
     /* ==============================================
-        5. お問い合わせフォーム送信制御
+        5. 個人情報保護方針 カスタムスクロールバー（SP/iOS用）
+       ============================================== */
+    const policyBox      = document.getElementById('js-policy-box');
+    const policyScrollbar = document.getElementById('js-policy-scrollbar');
+    const policyThumb    = document.getElementById('js-policy-thumb');
+
+    if (policyBox && policyScrollbar && policyThumb) {
+        function updatePolicyScrollbar() {
+            const scrollHeight  = policyBox.scrollHeight;
+            const clientHeight  = policyBox.clientHeight;
+            const scrollTop     = policyBox.scrollTop;
+            const trackHeight   = policyScrollbar.clientHeight;
+            const thumbHeight   = Math.max(30, (clientHeight / scrollHeight) * trackHeight);
+            const maxScroll     = scrollHeight - clientHeight;
+            const thumbTop      = maxScroll > 0 ? (scrollTop / maxScroll) * (trackHeight - thumbHeight) : 0;
+
+            policyThumb.style.height = thumbHeight + 'px';
+            policyThumb.style.top    = thumbTop + 'px';
+        }
+
+        policyBox.addEventListener('scroll', updatePolicyScrollbar);
+        window.addEventListener('resize', updatePolicyScrollbar);
+        setTimeout(updatePolicyScrollbar, 100);
+    }
+
+    /* ==============================================
+        6. お問い合わせフォーム送信制御
        ============================================== */
     $("#js-contact-form").on("submit", function (e) {
         e.preventDefault();

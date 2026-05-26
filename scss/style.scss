@@ -34,10 +34,11 @@ html {
     word-break: break-all;
     scroll-behavior: smooth;
     scroll-padding-top: 8rem;
-    font-size: 10px;
+    font-size: clamp(8px, calc(3.077px + 0.641vw), 10px);
     color: #000;
     @include sp {
         scroll-padding-top: 5rem;
+        font-size: 10px;
     }
 }
 html, body {
@@ -146,10 +147,21 @@ img {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        max-width: none;
+        width: 100%;
+        max-width: 108rem;
+        margin-inline: auto;
         padding-inline: calc(80 / 1080 * 100vw);
+        gap: 4rem;
+        @media (min-width: 768px) and (max-width: 1079px) {
+            padding-inline: 3rem;
+        }
+        @media (min-width: 1080px) {
+            padding-inline: 8rem;
+        }
         @include sp {
+            max-width: none;
             padding-inline: 2rem;
+            gap: 0;
         }
     }
 
@@ -186,6 +198,9 @@ img {
         display: flex;
         align-items: center;
         column-gap: calc(31 / 1080 * 100vw);
+        @media (min-width: 1080px) {
+            column-gap: 3.1rem;
+        }
         list-style: none;
         white-space: nowrap;
         margin: 0;
@@ -206,7 +221,7 @@ img {
             }
 
             @media (max-width:940px) {
-                font-size: 1.2rem;
+                font-size: 1.5rem;
                 letter-spacing: 0.05em;
             }
 
@@ -835,10 +850,11 @@ img {
             align-items: center;
             gap: calc(60 / 1080 * 100%);
             padding-left: calc(45 / 960 * 100%);
+            margin-bottom: 1rem;
             @include sp {
                 height: auto;
                 padding: 1rem 0 1rem 6.5%;
-                margin-bottom: 1rem;
+                margin-bottom: 1.09rem;
             }
 
             h3 {
@@ -852,12 +868,10 @@ img {
 
     &__article-wrapper {
         border-bottom: 1px solid $main-color;
-        margin-bottom: -0.9rem;
         margin-left: calc(45 / 960 * 100%);
         margin-right: calc(45 / 960 * 100%);
 
         @include sp {
-            margin-bottom: -0.1rem;
             margin-left: 5%;
             margin-right: 5%;
         }
@@ -865,7 +879,7 @@ img {
 
     &__article-link {
         display: flex;
-        padding-top: 0.9rem;
+        padding-top: 0;
         text-decoration: none;
         color: inherit;
         padding-bottom: 1.2rem;
@@ -885,7 +899,7 @@ img {
         }
 
         @include sp {
-            padding-top: 0.8rem;
+            padding-top: 0;
             padding-bottom: 1.3rem;
         }
     }
@@ -899,7 +913,7 @@ img {
 
         @include sp {
             width: auto;
-            margin-top: 1rem;
+            margin-top: 1.7rem;
             padding-left: 0.3125rem;
             white-space: nowrap;
         }
@@ -923,7 +937,7 @@ img {
 
         @include sp {
             p {
-                margin-top: 1.15rem;
+                margin-top: 1.85rem;
                 margin-right: 0.5625rem;
                 margin-left: 2rem;
             }
@@ -932,7 +946,7 @@ img {
 
     &__more {
         text-align: right;
-        margin-top: 3.2rem;
+        margin-top: 2.2rem;
         @include sp {
             margin-top: 2.4rem;
             margin-right: 5.4rem;
@@ -974,7 +988,7 @@ img {
                 background-repeat: no-repeat;
                 background-position: right bottom;
                 @include sp {
-                    top: -52%;
+                    top: -56%;
                     transform: translateX(-4.8rem);
                     bottom: auto;
                     width: 8.5rem;
@@ -987,9 +1001,9 @@ img {
 
 // company
 .company {
-    padding: 7.3rem 0 13.5rem;
+    padding: 7.3rem 0 8rem;
     @include sp {
-        padding: 4.5rem 0 5rem;
+        padding: 4.3rem 0 5rem;
     }
 
     &__title {
@@ -997,6 +1011,9 @@ img {
     }
 
     &-item {
+        display: grid;
+        grid-template-columns: calc(600 / 920 * 100%) 1fr;
+        grid-template-rows: auto 5.5rem;
         position: relative;
         margin-top: 7rem;
         @include sp {
@@ -1006,9 +1023,11 @@ img {
         }
 
         &__map {
+            grid-column: 1;
+            grid-row: 1;
             position: relative;
             aspect-ratio: 600 / 400;
-            width: calc(600 / 920 * 100%);
+            width: 100%;
             z-index: 100;
             @include sp {
                 width: 100%;
@@ -1023,29 +1042,26 @@ img {
         }
 
         &__info {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+            align-self: end;
+            justify-self: end;
             background: $main-color;
             color: $color-white;
             display: flex;
             flex-direction: column;
-            justify-content: center; 
+            justify-content: center;
             width: calc(500 / 920 * 100%);
             aspect-ratio: 500 / 262;
-            position: absolute;
-            right: 0;
-            bottom: -5.5rem;
             z-index: 20;
-            padding-left: calc(220 / 920 * 100%); 
-            padding-top: 4.7rem;
-            padding-bottom: 4.1rem;
-            padding-right: 2rem;
+            padding: 4.7rem 2rem 4.1rem 22rem;
             font-style: normal;
-            box-sizing: border-box;
 
             @include sp {
-                position: relative;
                 width: 100%;
                 aspect-ratio: auto;
-                bottom: 0;
+                align-self: auto;
+                justify-self: auto;
                 margin-top: 1.9rem;
                 padding: 2rem 2rem 1.4rem;
                 justify-content: flex-start;
@@ -1059,6 +1075,7 @@ img {
                 color: $color-white;
                 text-decoration: none;
                 -webkit-text-decoration: none;
+                font-weight: 600;
             }
 
             a {
@@ -1108,9 +1125,13 @@ img {
         &__mail {
             margin-top: 1.2rem;
             font-size: 1.6rem;
+            @include sp {
+                margin-top: 1.3rem;
+            }
             a {
                 display: inline-block;
                 text-decoration: none;
+                leter-spacing: 0.03em;
             }
         }
     }
@@ -1491,13 +1512,19 @@ img {
             border: none;
 
             @include sp {
-                padding: 3.1rem 4rem 3.1rem 3rem;
+                padding: 3.1rem 5rem 3rem 3rem;
                 height: 32.3rem;
                 margin-top: 0.1rem;
+                -webkit-overflow-scrolling: touch;
             }
 
             &::-webkit-scrollbar {
+                -webkit-appearance: none;
                 width: 2rem;
+                @include sp {
+                    width: 0;
+                    display: none;
+                }
             }
             &::-webkit-scrollbar-track {
                 background: #E3E3E3;
@@ -1508,15 +1535,20 @@ img {
                 margin-bottom: 1rem;
                 @include sp {
                     margin-bottom: 2.3rem;
+                    border-right: 1rem solid #FFFFFF;
+                    background-clip: padding-box;
                 }
             }
             &::-webkit-scrollbar-thumb {
+                -webkit-appearance: none;
                 background: #9B9B9B;
                 border-radius: 0;
                 border-right: 1rem solid #FFFFFF;
                 background-clip: padding-box;
                 @include sp {
                     min-height: 3rem;
+                    border-right: 1rem solid #FFFFFF;
+                    background-clip: padding-box;
                 }
             }
 
@@ -1533,15 +1565,20 @@ img {
                 }
             }
 
+            p:has(+ .policy-list):not(:has(br)) {
+                margin-bottom: 0;
+            }
+
             .policy-list {
-                margin-bottom: 2.5rem;
+                margin-top: 0;
+                margin-bottom: 3rem;
                 padding-left: 1.5em;
                 list-style: disc;
 
                 li {
                     font-size: 1.8rem;
                     line-height: 1.7;
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 0;
 
                     @include sp {
                         font-size: 1.6rem;
@@ -1592,6 +1629,32 @@ img {
     }
 }
 
+// policy custom scrollbar (SP/iOS)
+.policy-scroll-wrapper {
+    @include sp {
+        position: relative;
+    }
+}
+.policy-scrollbar {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    bottom: 1rem;
+    width: 1rem;
+    background: #E3E3E3;
+    pointer-events: none;
+    z-index: 1;
+
+    &__thumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 3rem;
+        background: #9B9B9B;
+    }
+}
+
 // footer
 .footer {
     padding: 8.2rem 0 0;
@@ -1628,9 +1691,9 @@ img {
 
     &__nav {
         width: 100%;
-        margin-top: 2.9rem;
+        padding-top: 3rem;
         @include sp {
-            margin-top: 2rem;
+            padding-top: 2rem;
         }
 
         ul {
@@ -1645,6 +1708,11 @@ img {
             border-top: 1px solid #000;
             padding-top: 2.8rem;
             width: calc(722 / 920 * 100%);
+
+            @media (min-width: 768px) and (max-width: 1079px) {
+                width: 100%;
+                column-gap: calc(40 / 920 * 100%);
+            }
 
             @include sp {
                 width: 100%;
@@ -1662,12 +1730,6 @@ img {
                 font-weight: 500;
                 transition: opacity 0.4s ease;
 
-                @media (max-width: 960px) {
-                    font-size: 1.4rem;
-                }
-                @media (max-width: 860px) {
-                    font-size: 1.2rem;
-                }
                 @include sp {
                     font-size: 1.8rem;
                 }
@@ -1764,9 +1826,9 @@ img {
     pointer-events: none;
     position: fixed;
     bottom: 6rem;
-    right: 2rem;
-    width: 5rem;
-    height: 5rem;
+    right: 6rem;
+    width: 6.8rem;
+    height: 6.8rem;
     background: $main-color;
     color: $color-white;
     text-align: center;
@@ -1855,6 +1917,11 @@ img {
         background: #fff;
         padding: 2rem 2.1rem 1.4rem 2rem;
         box-sizing: border-box;
+
+        @include sp {
+            width: calc(375 / 315 * 100%);
+            max-width: 31.5rem;
+        }
     }
 
     &__title {
