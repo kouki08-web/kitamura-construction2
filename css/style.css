@@ -4,7 +4,7 @@ html {
   word-break: break-all;
   scroll-behavior: smooth;
   scroll-padding-top: 8rem;
-  font-size: clamp(8px, 3.077px + 0.641vw, 10px);
+  font-size: 10px;
   color: #000;
 }
 @media (max-width: 767px) {
@@ -142,7 +142,7 @@ img {
   width: 100%;
   max-width: 108rem;
   margin-inline: auto;
-  padding-inline: 7.4074074074vw;
+  padding-inline: 8rem;
   gap: 4rem;
 }
 @media (min-width: 768px) and (max-width: 1079px) {
@@ -205,18 +205,9 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-column-gap: 2.8703703704vw;
-     -moz-column-gap: 2.8703703704vw;
-          column-gap: 2.8703703704vw;
-}
-@media (min-width: 1080px) {
-  .header__nav.pc ul {
-    -webkit-column-gap: 3.1rem;
-       -moz-column-gap: 3.1rem;
-            column-gap: 3.1rem;
-  }
-}
-.header__nav.pc ul {
+  -webkit-column-gap: 3.1rem;
+     -moz-column-gap: 3.1rem;
+          column-gap: 3.1rem;
   list-style: none;
   white-space: nowrap;
   margin: 0;
@@ -435,7 +426,7 @@ img {
   }
 }
 .fv__catch h2 {
-  font-size: 3.7037037037vw;
+  font-size: 4rem;
   line-height: 1.75;
   color: #FFFFFF;
   font-weight: 600;
@@ -444,7 +435,7 @@ img {
 }
 @media (max-width: 767px) {
   .fv__catch h2 {
-    font-size: 8vw;
+    font-size: 3rem;
     line-height: 2;
     text-shadow: 0.1rem 0.1rem 0.6rem #000000;
   }
@@ -527,7 +518,7 @@ img {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    gap: 5.8666666667vw;
+    gap: 2.2rem;
     top: 50.4%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
@@ -535,27 +526,27 @@ img {
   }
 }
 .about__catch h2 {
-  font-size: 2.7777777778vw;
-  margin-left: 3.5185185185vw;
+  font-size: 3rem;
+  margin-left: 3.8rem;
   font-weight: 500;
   letter-spacing: 0.18em;
 }
 @media (max-width: 767px) {
   .about__catch h2 {
-    font-size: 6.4vw;
+    font-size: 2.4rem;
     letter-spacing: 0.25em;
     margin-left: 0;
   }
 }
 .about__catch p {
-  font-size: 1.6666666667vw;
+  font-size: 1.8rem;
   line-height: 2.67;
   letter-spacing: 0.39em;
   font-weight: 500;
 }
 @media (max-width: 767px) {
   .about__catch p {
-    font-size: 4.2666666667vw;
+    font-size: 1.6rem;
     line-height: 1.62;
     letter-spacing: 0.25em;
   }
@@ -1015,7 +1006,7 @@ img {
 }
 .news__item .news__catch {
   background: #4D9600;
-  height: 4.6296296296vw;
+  height: 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1212,12 +1203,19 @@ img {
   margin-top: 0.2rem;
   text-indent: 0.3em;
 }
+.company__contents {
+  padding-top: 7rem;
+}
+@media (max-width: 767px) {
+  .company__contents {
+    padding-top: 4rem;
+  }
+}
 .company-item {
   display: grid;
   grid-template-columns: 65.2173913043% 1fr;
   grid-template-rows: auto 5.5rem;
   position: relative;
-  margin-top: 7rem;
 }
 @media (max-width: 767px) {
   .company-item {
@@ -1228,7 +1226,7 @@ img {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin-top: 4rem;
+    gap: 1.9rem;
   }
 }
 .company-item__map {
@@ -1267,6 +1265,7 @@ img {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  gap: 0.9rem;
   width: 54.347826087%;
   aspect-ratio: 500/262;
   z-index: 20;
@@ -1280,7 +1279,6 @@ img {
     -ms-flex-item-align: auto;
         align-self: auto;
     justify-self: auto;
-    margin-top: 1.9rem;
     padding: 2rem 2rem 1.4rem;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
@@ -1313,10 +1311,7 @@ img {
 .company-item__address p {
   font-size: 1.6rem;
   line-height: 1.5625;
-  margin-top: 0.9rem;
-}
-.company-item__tel {
-  margin-top: 0.6rem;
+  margin: 0;
 }
 .company-item__tel a {
   font-size: 2.5rem;
@@ -1335,13 +1330,7 @@ img {
   font-size: 1.6rem;
 }
 .company-item__mail {
-  margin-top: 1.2rem;
   font-size: 1.6rem;
-}
-@media (max-width: 767px) {
-  .company-item__mail {
-    margin-top: 1.3rem;
-  }
 }
 .company-item__mail a {
   display: inline-block;
@@ -1904,7 +1893,7 @@ img {
 .contact__policy-box .policy-list li {
   font-size: 1.8rem;
   line-height: 1.7;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
 }
 @media (max-width: 767px) {
   .contact__policy-box .policy-list li {
@@ -1961,7 +1950,7 @@ img {
   position: absolute;
   right: 1rem;
   top: 1rem;
-  bottom: 1rem;
+  bottom: 2.3rem;
   width: 1rem;
   background: #E3E3E3;
   pointer-events: none;
@@ -2197,6 +2186,14 @@ img {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+}
+@media (max-width: 767px) {
+  .pagetop {
+    width: 5rem;
+    height: 5rem;
+    bottom: 6rem;
+    right: 2rem;
+  }
 }
 @media (hover: hover) {
   .pagetop:hover {

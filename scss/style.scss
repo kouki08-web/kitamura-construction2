@@ -34,7 +34,7 @@ html {
     word-break: break-all;
     scroll-behavior: smooth;
     scroll-padding-top: 8rem;
-    font-size: clamp(8px, calc(3.077px + 0.641vw), 10px);
+    font-size: 10px;
     color: #000;
     @include sp {
         scroll-padding-top: 5rem;
@@ -150,7 +150,7 @@ img {
         width: 100%;
         max-width: 108rem;
         margin-inline: auto;
-        padding-inline: calc(80 / 1080 * 100vw);
+        padding-inline: 8rem;
         gap: 4rem;
         @media (min-width: 768px) and (max-width: 1079px) {
             padding-inline: 3rem;
@@ -197,10 +197,7 @@ img {
     &__nav.pc ul {
         display: flex;
         align-items: center;
-        column-gap: calc(31 / 1080 * 100vw);
-        @media (min-width: 1080px) {
-            column-gap: 3.1rem;
-        }
+        column-gap: 3.1rem;
         list-style: none;
         white-space: nowrap;
         margin: 0;
@@ -407,14 +404,14 @@ img {
     }
 
     &__catch h2 {
-        font-size: calc(40 / 1080 * 100vw);
+        font-size: 4rem;
         line-height: 1.75;
         color: $color-white;
         font-weight: 600;
         letter-spacing: 0.29em;
         text-shadow: 0.2rem 0.2rem 0.8rem #000000;
         @include sp {
-            font-size: calc(30 / 375 * 100vw);
+            font-size: 3rem;
             line-height: 2;
             text-shadow: 0.1rem 0.1rem 0.6rem #000000;
         }
@@ -482,33 +479,33 @@ img {
             justify-content: center;
             align-items: center;
             flex-direction: row;
-            gap: calc(22 / 375 * 100vw);
+            gap: 2.2rem;
             top: 50.4%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
 
         h2 {
-            font-size: calc(30 / 1080 * 100vw);
-            margin-left: calc(38 / 1080 * 100vw);
+            font-size: 3rem;
+            margin-left: 3.8rem;
             font-weight: 500;
             letter-spacing: 0.18em;
 
             @include sp {
-                font-size: calc(24 / 375 * 100vw);
+                font-size: 2.4rem;
                 letter-spacing: 0.25em;
                 margin-left: 0;
             }
         }
 
         p {
-            font-size: calc(18 / 1080 * 100vw);
+            font-size: 1.8rem;
             line-height: 2.67;
             letter-spacing: 0.39em;
             font-weight: 500;
 
             @include sp {
-                font-size: calc(16 / 375 * 100vw);
+                font-size: 1.6rem;
                 line-height: 1.62;
                 letter-spacing: 0.25em;
             }
@@ -845,7 +842,7 @@ img {
 
         .news__catch {
             background: $main-color;
-            height: calc(50 / 1080 * 100vw);
+            height: 5rem;
             display: flex;
             align-items: center;
             gap: calc(60 / 1080 * 100%);
@@ -1010,16 +1007,22 @@ img {
         @include title;
     }
 
+    &__contents {
+        padding-top: 7rem;
+        @include sp {
+            padding-top: 4rem;
+        }
+    }
+
     &-item {
         display: grid;
         grid-template-columns: calc(600 / 920 * 100%) 1fr;
         grid-template-rows: auto 5.5rem;
         position: relative;
-        margin-top: 7rem;
         @include sp {
             display: flex;
             flex-direction: column;
-            margin-top: 4rem;
+            gap: 1.9rem;
         }
 
         &__map {
@@ -1051,6 +1054,7 @@ img {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            gap: 0.9rem;
             width: calc(500 / 920 * 100%);
             aspect-ratio: 500 / 262;
             z-index: 20;
@@ -1062,7 +1066,6 @@ img {
                 aspect-ratio: auto;
                 align-self: auto;
                 justify-self: auto;
-                margin-top: 1.9rem;
                 padding: 2rem 2rem 1.4rem;
                 justify-content: flex-start;
             }
@@ -1099,12 +1102,11 @@ img {
             p {
                 font-size: 1.6rem;
                 line-height: 1.5625;
-                margin-top: 0.9rem;
+                margin: 0;
             }
         }
 
         &__tel {
-            margin-top: 0.6rem;
             a {
                 font-size: 2.5rem;
                 font-weight: 600;
@@ -1123,11 +1125,7 @@ img {
         }
 
         &__mail {
-            margin-top: 1.2rem;
             font-size: 1.6rem;
-            @include sp {
-                margin-top: 1.3rem;
-            }
             a {
                 display: inline-block;
                 text-decoration: none;
@@ -1578,7 +1576,7 @@ img {
                 li {
                     font-size: 1.8rem;
                     line-height: 1.7;
-                    margin-bottom: 0;
+                    margin-bottom: 0.5rem;
 
                     @include sp {
                         font-size: 1.6rem;
@@ -1639,7 +1637,7 @@ img {
     position: absolute;
     right: 1rem;
     top: 1rem;
-    bottom: 1rem;
+    bottom: 2.3rem;
     width: 1rem;
     background: #E3E3E3;
     pointer-events: none;
@@ -1842,6 +1840,13 @@ img {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
+    }
+
+    @include sp {
+        width: 5rem;
+        height: 5rem;
+        bottom: 6rem;
+        right: 2rem;
     }
 
     @media (hover: hover) {
