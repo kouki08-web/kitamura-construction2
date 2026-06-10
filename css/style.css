@@ -148,6 +148,7 @@ img {
 @media (min-width: 768px) and (max-width: 1079px) {
   .header .inner {
     padding-inline: 3rem;
+    gap: 2rem;
   }
 }
 @media (min-width: 1080px) {
@@ -192,6 +193,11 @@ img {
     font-size: 1.8rem;
   }
 }
+@media (max-width: 860px) {
+  .header__logo a {
+    font-size: 1.6rem;
+  }
+}
 @media (max-width: 767px) {
   .header__logo a {
     font-size: 2rem;
@@ -212,6 +218,13 @@ img {
   white-space: nowrap;
   margin: 0;
   padding: 0;
+}
+@media (min-width: 768px) and (max-width: 1079px) {
+  .header__nav.pc ul {
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
+  }
 }
 .header__nav.pc ul li a {
   font-size: 1.8rem;
@@ -236,6 +249,12 @@ img {
   .header__nav.pc ul li a {
     font-size: 1.5rem;
     letter-spacing: 0.05em;
+  }
+}
+@media (max-width: 860px) {
+  .header__nav.pc ul li a {
+    font-size: 1.4rem;
+    letter-spacing: 0;
   }
 }
 @media (hover: hover) {
@@ -1204,11 +1223,11 @@ img {
   text-indent: 0.3em;
 }
 .company__contents {
-  padding-top: 7rem;
+  margin-top: 0;
 }
 @media (max-width: 767px) {
   .company__contents {
-    padding-top: 4rem;
+    margin-top: 4rem;
   }
 }
 .company-item {
@@ -1216,6 +1235,7 @@ img {
   grid-template-columns: 65.2173913043% 1fr;
   grid-template-rows: auto 5.5rem;
   position: relative;
+  margin-top: 7rem;
 }
 @media (max-width: 767px) {
   .company-item {
@@ -1227,6 +1247,7 @@ img {
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 1.9rem;
+    margin-top: 0;
   }
 }
 .company-item__map {
@@ -1265,12 +1286,17 @@ img {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 0.9rem;
   width: 54.347826087%;
   aspect-ratio: 500/262;
   z-index: 20;
   padding: 4.7rem 2rem 4.1rem 22rem;
   font-style: normal;
+}
+@media (min-width: 768px) and (max-width: 1079px) {
+  .company-item__info {
+    padding: 3rem 2rem 3rem calc(20% + 1rem);
+    aspect-ratio: auto;
+  }
 }
 @media (max-width: 767px) {
   .company-item__info {
@@ -1279,7 +1305,7 @@ img {
     -ms-flex-item-align: auto;
         align-self: auto;
     justify-self: auto;
-    padding: 2rem 2rem 1.4rem;
+    padding: 2rem 2rem 1.2rem;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
@@ -1308,10 +1334,15 @@ img {
   font-size: 2rem;
   margin: 0;
 }
+.company-item__address {
+  margin-top: 0.9rem;
+}
 .company-item__address p {
   font-size: 1.6rem;
   line-height: 1.5625;
-  margin: 0;
+}
+.company-item__tel {
+  margin-top: 0.6rem;
 }
 .company-item__tel a {
   font-size: 2.5rem;
@@ -1331,6 +1362,7 @@ img {
 }
 .company-item__mail {
   font-size: 1.6rem;
+  margin-top: 1.3rem;
 }
 .company-item__mail a {
   display: inline-block;
@@ -1344,7 +1376,7 @@ img {
 }
 @media (max-width: 767px) {
   .contact {
-    padding: 4.3rem 0 5rem;
+    padding: 4.4rem 0 5rem;
   }
 }
 .contact__title {
@@ -1385,7 +1417,6 @@ img {
 @media (max-width: 767px) {
   .contact__contents {
     width: 100%;
-    margin-top: 3.7rem;
   }
 }
 .contact__text {
@@ -1401,7 +1432,7 @@ img {
   }
 }
 .contact form {
-  margin-top: 6.9rem;
+  margin-top: 3.2rem;
 }
 @media (max-width: 767px) {
   .contact form {
@@ -1431,6 +1462,7 @@ img {
       -ms-flex-align: start;
           align-items: flex-start;
   width: 100%;
+  margin-top: 3.7rem;
 }
 @media (max-width: 767px) {
   .contact__item {
@@ -1441,6 +1473,7 @@ img {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
+    margin-top: 3.7rem;
   }
 }
 @media (max-width: 767px) {
@@ -1542,6 +1575,9 @@ img {
   .contact__item:nth-child(6) {
     margin-top: 0.9rem;
   }
+}
+.contact__item:nth-child(7) {
+  margin-top: 0rem;
 }
 @media (max-width: 767px) {
   .contact__item:nth-child(7) {
@@ -1881,7 +1917,7 @@ img {
     margin-bottom: 3.3rem;
   }
 }
-.contact__policy-box p:has(+ .policy-list):not(:has(br)) {
+.contact__policy-box p:has(+ .policy-list) {
   margin-bottom: 0;
 }
 .contact__policy-box .policy-list {
@@ -2136,7 +2172,7 @@ img {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  margin-top: 8rem;
+  margin-top: 7.8rem;
   aspect-ratio: 11.7391304348;
 }
 @media (max-width: 767px) {

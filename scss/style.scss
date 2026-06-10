@@ -154,6 +154,7 @@ img {
         gap: 4rem;
         @media (min-width: 768px) and (max-width: 1079px) {
             padding-inline: 3rem;
+            gap: 2rem;
         }
         @media (min-width: 1080px) {
             padding-inline: 8rem;
@@ -188,6 +189,9 @@ img {
         @media (max-width:1020px) {
             font-size: 1.8rem;
         }
+        @media (max-width:860px) {
+            font-size: 1.6rem;
+        }
         @include sp {
             font-size: 2rem;
             height: 5rem;
@@ -203,6 +207,10 @@ img {
         margin: 0;
         padding: 0;
 
+        @media (min-width: 768px) and (max-width: 1079px) {
+            column-gap: 2rem;
+        }
+
         li a {
             font-size: 1.8rem;
             text-decoration: none;
@@ -211,7 +219,7 @@ img {
             display: flex;
             align-items: center;
             height: 8rem;
-            
+
             @media (max-width:1020px) {
                 font-size: 1.6rem;
                 letter-spacing: 0.05em;
@@ -220,6 +228,11 @@ img {
             @media (max-width:940px) {
                 font-size: 1.5rem;
                 letter-spacing: 0.05em;
+            }
+
+            @media (max-width:860px) {
+                font-size: 1.4rem;
+                letter-spacing: 0;
             }
 
             @media (hover: hover) {
@@ -415,6 +428,7 @@ img {
             line-height: 2;
             text-shadow: 0.1rem 0.1rem 0.6rem #000000;
         }
+
     }
 }
 
@@ -1008,9 +1022,9 @@ img {
     }
 
     &__contents {
-        padding-top: 7rem;
+        margin-top: 0;
         @include sp {
-            padding-top: 4rem;
+            margin-top: 4rem;
         }
     }
 
@@ -1019,10 +1033,12 @@ img {
         grid-template-columns: calc(600 / 920 * 100%) 1fr;
         grid-template-rows: auto 5.5rem;
         position: relative;
+        margin-top: 7rem;
         @include sp {
             display: flex;
             flex-direction: column;
             gap: 1.9rem;
+            margin-top: 0;
         }
 
         &__map {
@@ -1054,19 +1070,23 @@ img {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 0.9rem;
             width: calc(500 / 920 * 100%);
             aspect-ratio: 500 / 262;
             z-index: 20;
             padding: 4.7rem 2rem 4.1rem 22rem;
             font-style: normal;
 
+            @media (min-width: 768px) and (max-width: 1079px) {
+                padding: 3rem 2rem 3rem calc(20% + 1rem);
+                aspect-ratio: auto;
+            }
+
             @include sp {
                 width: 100%;
                 aspect-ratio: auto;
                 align-self: auto;
                 justify-self: auto;
-                padding: 2rem 2rem 1.4rem;
+                padding: 2rem 2rem 1.2rem;
                 justify-content: flex-start;
             }
 
@@ -1099,14 +1119,15 @@ img {
         }
 
         &__address {
+            margin-top: 0.9rem;
             p {
                 font-size: 1.6rem;
                 line-height: 1.5625;
-                margin: 0;
             }
         }
 
         &__tel {
+            margin-top: 0.6rem;
             a {
                 font-size: 2.5rem;
                 font-weight: 600;
@@ -1126,6 +1147,7 @@ img {
 
         &__mail {
             font-size: 1.6rem;
+            margin-top: 1.3rem;
             a {
                 display: inline-block;
                 text-decoration: none;
@@ -1140,7 +1162,7 @@ img {
     padding: 7.4rem 0 8rem;
     background: $background;
     @include sp {
-        padding: 4.3rem 0 5rem;
+        padding: 4.4rem 0 5rem;
     }
 
     &__title {
@@ -1159,9 +1181,9 @@ img {
         max-width: 80rem;
         margin: 3.6rem auto 0;
         box-sizing: border-box;
+        
         @include sp {
             width: 100%;
-            margin-top: 3.7rem;
         }
     }
 
@@ -1177,7 +1199,7 @@ img {
     }
 
     form {
-        margin-top: 6.9rem;
+        margin-top: 3.2rem;
         @include sp {
             margin-top: 4.2rem;
         }
@@ -1196,9 +1218,11 @@ img {
         display: flex;
         align-items: flex-start;
         width: 100%;
+        margin-top: 3.7rem;
         @include sp {
             flex-direction: column;
             align-items: flex-start;
+            margin-top: 3.7rem;
         }
 
         &:nth-child(2) {
@@ -1280,6 +1304,7 @@ img {
         }
     }
     &__item:nth-child(7) {
+        margin-top: 0rem;
         @include sp {
             margin-top: -1rem;
         }
@@ -1563,7 +1588,7 @@ img {
                 }
             }
 
-            p:has(+ .policy-list):not(:has(br)) {
+            p:has(+ .policy-list) {
                 margin-bottom: 0;
             }
 
@@ -1791,7 +1816,7 @@ img {
         justify-content: center;
         align-items: center;
         width: 100%;
-        margin-top: 8rem;
+        margin-top: 7.8rem;
         aspect-ratio: calc(1080 / 92);
 
         @include sp {
