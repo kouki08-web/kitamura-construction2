@@ -1022,7 +1022,7 @@ img {
     }
 
     &__contents {
-        margin-top: 0;
+        margin-top: 7rem;
         @include sp {
             margin-top: 4rem;
         }
@@ -1033,12 +1033,10 @@ img {
         grid-template-columns: calc(600 / 920 * 100%) 1fr;
         grid-template-rows: auto 5.5rem;
         position: relative;
-        margin-top: 7rem;
         @include sp {
             display: flex;
             flex-direction: column;
             gap: 1.9rem;
-            margin-top: 0;
         }
 
         &__map {
@@ -1222,7 +1220,7 @@ img {
         @include sp {
             flex-direction: column;
             align-items: flex-start;
-            margin-top: 3.7rem;
+            margin-top: 0.2rem;
         }
 
         &:nth-child(2) {
@@ -1243,6 +1241,9 @@ img {
                 width: 100%;
             }
             .contact__label {
+                margin-top: 0;
+            }
+            .contact__policy {
                 margin-top: 0;
             }
         }
@@ -1292,21 +1293,21 @@ img {
         }
     }
     &__item:nth-child(5) {
-        margin-top: 2.2rem;
+        margin-top: 2.3rem;
         @include sp {
             margin-top: 1.4rem;
         }
     }
     &__item:nth-child(6) {
-        margin-top: 2.6rem;
+        margin-top: 2.5rem;
         @include sp {
             margin-top: 0.9rem;
         }
     }
     &__item:nth-child(7) {
-        margin-top: 0rem;
+        margin-top: 2.3rem;
         @include sp {
-            margin-top: -1rem;
+            margin-top: 1.2rem;
         }
     }
 
@@ -1513,16 +1514,7 @@ img {
     }
 
     &__policy {
-        margin-top: 2rem;
         width: 100%;
-
-        &-title {
-            font-size: 2rem;
-            font-weight: 500;
-            @include sp {
-                margin-top: 0.1rem;
-            }
-        }
 
         &-box {
             width: 100%;
@@ -1537,7 +1529,7 @@ img {
             @include sp {
                 padding: 3.1rem 5rem 3rem 3rem;
                 height: 32.3rem;
-                margin-top: 0.1rem;
+                margin-top: 0.3rem;
                 -webkit-overflow-scrolling: touch;
             }
 
@@ -1592,6 +1584,10 @@ img {
                 margin-bottom: 0;
             }
 
+            p.policy-list-intro:has(+ .policy-list) {
+                margin-bottom: 2rem;
+            }
+
             .policy-list {
                 margin-top: 0;
                 margin-bottom: 3rem;
@@ -1611,6 +1607,29 @@ img {
 
             > *:last-child {
                 margin-bottom: 0;
+            }
+
+            .policy-company-info {
+                margin: 0;
+
+                > div {
+                    display: flex;
+                }
+
+                dt, dd {
+                    font-size: 1.8rem;
+                    font-weight: 500;
+                    line-height: 1.72;
+                    margin: 0;
+
+                    @include sp {
+                        font-size: 1.6rem;
+                    }
+                }
+
+                dt {
+                    min-width: 8em;
+                }
             }
         }
     }
